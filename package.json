@@ -1,0 +1,43 @@
+{
+  "name": "williams-blue",
+  "version": "0.0.1",
+  "description": "-",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "Michael Williams",
+  "license": "-",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "devDependencies": {},
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.36",
+    "babel-core": "^6",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.3",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-csslint": "^1.0.0",
+    "gulp-htmllint": "0.0.14",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "postcss-cssnext": "^3.0.2"
+  }
+}

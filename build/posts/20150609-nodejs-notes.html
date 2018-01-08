@@ -1,0 +1,209 @@
+<section class="blog-post">
+<div class="post-start">
+    <h1>Node.js Notes</h1>
+    <time>9 June, 2015</time>
+</div>
+<h2>Notes On The Notes</h2>
+<p>A little while ago I decided to read through the whole Node.js API and see what useful bits I could find. In order to have an easily-digested overview of the API I wrote these notes on all the modules and some methods I thought would come
+    in handy.</p>
+<p>The structure of the notes follows the Node.js API docs pretty closely. I've left out parts which I thought weren't very useful (just my opinion, based on what I do), and added some short explanations for what many of them do or can be
+    used for. I also included the global objects which aren't modules, such as <code>__filename</code>.</p>
+<p>The name of each module is followed by its scope in parantheses. Objects that are 'global' are exactly that - they and their methods are always available. Those that are 'module global' are available without being required but are specific
+    to each module (think module as in npm module - the project you're working on; ex. <code>__filename</code> (two underscores) is specific to the code being executed). 'Require' means you need to <code>require();</code> that module if
+    you want to use it.</p>
+<p>Most modules just have a short explanation for their usage. Others have a list of use cases and others still have a list of specific methods I thought would be useful and wanted to remember (method names are preceded by a dot). Without
+    further ado:</p>
+<h2>assert (require)</h2>
+<ul>
+    <li>for tests</li>
+</ul>
+<h2>Buffer (global)</h2>
+<ul>
+    <li>for non-text (binary) data</li>
+</ul>
+<h2>C/C++ addons (require ./)</h2>
+<ul>
+    <li>glue to C and C++ libraries (eg V8 library)</li>
+    <li>files or directories of your C or C++ libraries with respect to current directory ex. <code>require('./build/Release/addon');</code></li>
+</ul>
+<h2>child_process (require)</h2>
+<ul>
+    <li>create child processes (eg run a process in a shell)</li>
+</ul>
+<h2>cluster (require)</h2>
+<ul>
+    <li>node is single threaded; use this to run a cluster of node processes</li>
+</ul>
+<h2>console (global)</h2>
+<ul>
+    <li>console.log: printing to stdout and stderr</li>
+</ul>
+<h2>crypto (require)</h2>
+<ul>
+    <li>hashes</li>
+    <li>OpenSSL methods</li>
+    <li>HTTPS methods</li>
+</ul>
+<h2>debugger (global?)</h2>
+<ul>
+    <li>V8 debugger accessible via TCP</li>
+</ul>
+<h2>dns (require)</h2>
+<ul>
+    <li>DNS lookup via operating system</li>
+    <li>DNS lookup via DNS server</li>
+</ul>
+<h2>domain (require)</h2>
+<ul>
+    <li>use with cluster</li>
+    <li>handle multiple different I/O operations as a single group</li>
+    <li>Domain object will be notified of any errors; context of error is kept</li>
+</ul>
+<h2>events (require)</h2>
+<ul>
+    <li>for emitting events</li>
+    <li>objects which emit events are instances of events.EventEmitter</li>
+    <li>event listeners</li>
+</ul>
+<h2>__filename (module global)</h2>
+<ul>
+    <li>filename of code being executed</li>
+    <li>note that there are two underscores in the name of this object</li>
+</ul>
+<h2>__dirname (module global)</h2>
+<ul>
+    <li>name of directory that __filename resides in</li>
+    <li>note that there are two underscores in the name of this object</li>
+</ul>
+<h2>fs (require)</h2>
+<ul>
+    <li>file I/O; all methods have sync and async forms</li>
+    <li>.rename, .open, .close, .read, .write, .readFile, .writeFile, .mkdir, .rm, .rmdir, .chown, .chmod, .truncate, .append, .watch, .exists</li>
+</ul>
+<h2>http, https (require)</h2>
+<ul>
+    <li>create server</li>
+    <li>create client</li>
+    <li>http request, http get</li>
+</ul>
+<h2>module (module global)</h2>
+<ul>
+    <li>reference to object representing current module</li>
+    <li>module.exports: expose functions etc outside module scope</li>
+    <li>module.require: use <code>require();</code> as if called from original module</li>
+    <li>.id, .filename, .loaded, .parent, .children</li>
+</ul>
+<h2>net (require)</h2>
+<ul>
+    <li>async network wrapper (streams); both servers and clients</li>
+    <li>create server, create connection, create socket, etc</li>
+</ul>
+<h2>os (require)</h2>
+<ul>
+    <li>basic os info utilities</li>
+    <li>.tmpdir, .endianness, .hostname, .type, .platform, .arch, .release, .uptime, .loadavg, .totalmem, .freemem, .cpus, .networkInterfaces, .EOL</li>
+</ul>
+<h2>path (require)</h2>
+<ul>
+    <li>parsing and manipulating file paths</li>
+    <li>.normalize, .join, .resolve, .isAbsolute, .relative, .dirname, .basename, .extname, .sep, .delimiter, .parse, .format</li>
+</ul>
+<h2>process (global)</h2>
+<ul>
+    <li>instance of EventEmitter</li>
+    <li>use to output to and accept input from CLI</li>
+    <li>.stdin, .stdout, .stderr, .exec, .abort, .exit, .exitCode, .cwd, .env, .kill, .pid, .title, .uptime, .mainModule</li>
+</ul>
+<h2>punycode (require)</h2>
+<ul>
+    <li>ascii to/from unicode encoding/decoding</li>
+    <li>ucs2 encoding/decoding</li>
+</ul>
+<h2>querystring (require)</h2>
+<ul>
+    <li>utilities for dealing with query strings</li>
+    <li>.stringify, .parse, .escape, .unescape</li>
+</ul>
+<h2>readline (require)</h2>
+<ul>
+    <li>read a stream such as process.stdin line by line</li>
+</ul>
+<h2>repl (require)</h2>
+<ul>
+    <li>REPL provides a way to interactively run JavaScript and see the results</li>
+    <li>used for debugging, testing, or just trying things out</li>
+</ul>
+<h2>require (module global)</h2>
+<ul>
+    <li>requires modules</li>
+    <li>.resolve exact location of file</li>
+    <li>.cache: delete key value from require.cache to reload module on next require</li>
+    <li><code>require('/foo');</code> = absolute path; <code>require('./foo');</code> or <code>require('../foo');</code> = relative; <code>require('foo');</code> = core module or from node_modules folder</li>
+</ul>
+<h2>smalloc (global ?) experimental</h2>
+<ul>
+    <li>simple allocator; raw memory allocation; used by Buffers</li>
+</ul>
+<h2>stream (require)</h2>
+<ul>
+    <li>instance of EventEmitter</li>
+    <li>readable, writable, duplex (both), or transform (output computed from input)</li>
+    <li>.read, .resume, .pause, .isPaused, .close, .end, .pipe, .unpipe, .setEncoding</li>
+</ul>
+<h2>string_decoder (require)</h2>
+<ul>
+    <li>decodes buffer to string (same as <code>buffer.toString()</code> but supports utf8)</li>
+    <li>.write, .end</li>
+</ul>
+<h2>Timers (all of following are global)</h2>
+<ul>
+    <li><code>setTimeout(callback, delay[, arg][, ...])</code> run <code>callback</code> after <code>delay</code> milliseconds. End with <code>clearTimeout(timeoutObject)</code></li>
+    <li><code>setInterval(callback, delay[, arg][, ...])</code> run <code>callback</code> every <code>delay</code> milliseconds. End with <code>clearInterval(intervalObject)</code></li>
+    <li><code>setImmediate(callback[, arg][, ...])</code> immediate execution of callback after I/O events callbacks and before setTimeout/setInterval. End with <code>clearImmediate(immediateObject)</code></li>
+    <li>FYI timers may not execute in exactly <code>delay</code> milliseconds - “Node.js makes no guarantees about the exact timing of when the callback will fire, nor of the ordering things will fire in. The callback will be called as close as possible
+        to the time specified.”</li>
+</ul>
+<h2>tls (require)</h2>
+<ul>
+    <li>uses OpenSSL to provide TLS and/or SSL: encrypted streams</li>
+</ul>
+<h2>tty (require)</h2>
+<ul>
+    <li>terminal emulation</li>
+    <li>tty.ReadStream and tty.WriteStream classes</li>
+</ul>
+<h2>dgram (require)</h2>
+<ul>
+    <li>User Datagram Protocol (UDP)</li>
+    <li>datagram socket creation etc</li>
+</ul>
+<h2>url (require)</h2>
+<ul>
+    <li>.parse (href, protocol, slashes, host, auth, hostname, port, pathname, search, path, query, hash)</li>
+    <li>.format</li>
+    <li>.resolve</li>
+</ul>
+<h2>util (require)</h2>
+<ul>
+    <li>supports Node's internal APIs</li>
+    <li>.format: format strings</li>
+    <li>.log: timestamped message to stdout</li>
+    <li>.inspect: return a string representation of object, useful for debugging</li>
+    <li>.isArray, .isRegExp, .isDate, .isError, .inherits</li>
+</ul>
+<h2>vm (require)</h2>
+<ul>
+    <li>JavaScript code can be compiled and run immediately or saved and run later</li>
+    <li>sandboxing</li>
+</ul>
+<h2>zlib (require)</h2>
+<ul>
+    <li>Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes (all readable/writable Streams)</li>
+    <li>Compressing or decompressing a file can be done by piping an fs.ReadStream into a zlib stream, then into an fs.WriteStream</li>
+</ul>
+</section>
+
+<script>
+    currentPage.title = "Node.js Notes - Michael Williams";
+    runAfterPageLoad();
+</script>

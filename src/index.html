@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Michael Williams</title>
+    <meta content="Michael Williams: designer, developer, and user experience activist" name="description">
+    <meta content="Michael Williams" name="author">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <link href="/img/favicon.svg" rel="icon" type="icon">
+    <link href="/css/core.css" rel="stylesheet">
+</head>
+
+<body>
+     
+    <header>
+        <nav class="u-_is-absent">
+            <a href="#/_home.html" class="u-link-reset masthead">Michael Williams</a>
+            <a href="#/_posts.html" class="link-nav">Blog</a>
+            <a href="#/_work.html" class="link-nav">Work</a>
+            <a href="#/_me.html" class="link-nav">Me</a>
+        </nav>
+    </header>
+
+    <main><div>
+        <section class="no-js">
+            <p style="color: #006fff">Please use a web browser with JavaScript enabled to view the full site.</p>
+            <h1>Michael Williams</h1>
+            <p>
+                Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating easy-to-use, fast websites with designs that are both elegant and functional.  <a href="mailto:33a1eb@williams.blue">Send me an email!</a>
+                <br><br>
+                In my spare time I like to read, <a href="https://open.spotify.com/user/mwilliaams">listen to music</a>, play guitar, dance, and explore the great outdoors.
+                <br><br>
+                I live in sunny San Diego and know of only two seasons: "Warm" and "Hot".
+                <br><br>
+            </p>
+        </section>
+        <!-- If JS is enabled, remove the no-JS content and show the nav bar. -->
+        <script>
+            (function(){
+                var a=document.querySelector(".no-js");a.parentNode.removeChild(a);
+                document.querySelector("nav").classList.remove("u-_is-absent");
+            })();
+        </script>
+    </div></main>
+
+    <footer>
+        <div class="social-links-div">
+            <a href="mailto:33a1eb@williams.blue" class="iconsprite iconsprite-email u-link-reset">Email</a>
+            <a href="https://github.com/michaeljwilliams" class="iconsprite iconsprite-github u-link-reset">Code</a>
+            <a href="https://open.spotify.com/user/mwilliaams" class="iconsprite iconsprite-spotify u-link-reset">I wanna rock!</a>
+        </div>
+        <small>Michael Williams</small>
+    </footer>
+
+    <script>
+    // This script loads the page/template. Code here runs before the page loads, but must come after the main 
+    // structural elements because these are referenced in the code.
+        ////////////////////////////////////////////////////////////////////////////////
+        // Global variables
+        var currentPage = {
+            url: "/_home.html"
+            ,title: "Michael Williams"
+            ,historical: false
+        };
+
+        // Necessary so that we can set history entry properly on first load.
+        var firstLoad = true;
+
+        var logging = false;
+        // if(logging===true) console.log("", "\n\n");
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // Code that runs when page initially loads.
+
+        console.log("logging: ", logging, "\n\n");
+
+        window.onpopstate = function(event) {
+            if(event.state !== currentPage) {
+                if(logging===true) console.log("Pop! moving through history");
+                if(logging===true) console.log("popstate event: ", event, "\n\n");
+
+                currentPage = event.state;
+                currentPage.historical = true;
+                loadPage(event.state.url);
+            }
+        };
+
+        // This will only run once, when the page is first loaded (or refreshed).
+        loadPage();
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // Functions
+
+        function asyncGet(url, cb, errcb) { // Extra args will be passed to cb
+            if(logging===true) {
+                console.log("asyncGet(url, cb, errcb):");
+                console.log("    url: ", url);
+                console.log("    cb: ", cb);
+                console.log("    errcb: ", errcb);
+                console.log("caller: ", asyncGet.caller, "\n\n")
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.send(null);
+
+            xhr.timeout = 10000;
+            xhr.ontimeout = function() {
+                console.error("asyncGet: The request for " + url + " timed out after 5 seconds.", "\n\n");
+            };
+
+            xhr.onload = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    cb(xhr.response);
+                } else { // Log error to console
+                    console.error("asyncGet: The request for " + url + " failed with error: " + xhr.statusText, "\n\n");
+                    if(errcb) errcb(url);               // Call errcb if given
+                }
+            };
+        }
+
+        function addContent(where, content) {
+            if(logging===true) {
+                console.log("addContent(where, content):");
+                console.log("    where: ", where);
+                console.log("    content: ", content);
+                console.log("caller: ", addContent.caller, "\n\n")
+            }
+
+            document.querySelector(where).appendChild(content);
+        }
+
+        // Asynchronously retrieves content, loads into the given location, and calls cb when done.
+        function loadContentIntoElement(url, where, cb) {
+            if(logging===true) {
+                console.log("loadContentIntoElement(url, where, cb):");
+                console.log("    url: ", url);
+                console.log("    where: ", where);
+                console.log("    cb: ", cb);
+                console.log("caller: ", loadContentIntoElement.caller, "\n\n")
+            }
+
+            asyncGet(url, parseAsyncContent);
+
+            function parseAsyncContent(content) {
+                var parser = new DOMParser();                           // Create a parser for the content
+                content = parser.parseFromString(content,"text/html");   // Parse content to create an xml object
+
+                // Create new script tags and append them to <body> so that they will run. 
+                // Fill them with the code that we received from asyncGet.
+                var scripts = content.body.getElementsByTagName("script");
+
+                // Slight delay so that new content finishes being added to the DOM before the scripts below 
+                // (1) try to modify the new content.
+                window.setTimeout(function() {      
+                    if(scripts.length === 0) {  // If no scripts are loaded, run this now.
+                        runAfterPageLoad();     // Otherwise it is called by a script that we loaded.
+                    } else {
+                        for(var i = 0, l = scripts.length; i < l; i ++) {   // (1) these scripts
+                            var script = document.createElement("script");
+                            if (!scripts[i].src) {
+                                script.innerHTML = scripts[i].innerHTML;
+                            } else {
+                                script.src = scripts[i].src;
+                            }
+                            document.body.appendChild(script);
+                        }
+                    }
+                }, 10);
+
+                addContent(where, content.body.firstChild);    // Add the content to the page. 
+                // The parsing process created <html> and <body> elements, so content.body bypasses that.
+                // *** Beware that whitespace can make this fail (whitespace becomes first child). ***
+            }
+            if(cb) cb(url, where);
+        }
+
+        // Loads the page
+        function loadPage(whichPage) {
+            if(logging===true) {
+                console.log("loadPage(whichPage):");
+                console.log("    whichPage: ", whichPage);
+                console.log("caller: ", loadPage.caller, "\n\n")
+            }
+
+            // Load the page from the url
+            if(!whichPage) {
+                // If a hash with a slash (#/) is present in the url, attempt to load the content at that path
+                var hash = window.location.hash.substring(1);               // Get hash
+                if(hash.length !== 0 && hash.substring(0,1) === "/") {      // Check for "#/"
+                    whichPage = hash;
+                } else whichPage = "/_home.html";
+            // Load the page from the given value of whichPage
+            } else { // Stuff that should happen if whichPage is given as a parameter
+            }
+
+            // Remove old content
+            var oldContent = document.querySelector("main").firstChild;
+            if(oldContent) oldContent.parentElement.removeChild(oldContent);
+
+            // Update currentPage.url, unless we're moving through browser history.
+            if(currentPage.historical === false) {
+                currentPage.url = whichPage;
+            }
+
+            if(logging===true) console.log("----------------------------------------");
+            if(logging===true) console.log("Current page: " + currentPage.url, "\n\n");
+
+            loadContentIntoElement(whichPage, "main");          // Load remote content into main.
+        }
+
+        // Stuff to do after the page loads. This function is called by a script in the loaded content, or
+        // after the new content has been parsed, if no scripts are present.
+        // Consider how important things are before putting them here instead of /js/core.js.
+        function runAfterPageLoad(url, where) {
+            if(logging===true) {
+                console.log("runAfterPageLoad(url, where):");
+                console.log("    url: ", url);
+                console.log("    where: ", where)
+                console.log("caller: ", runAfterPageLoad.caller, "\n\n");
+            }
+
+            // Add history entry and change URL to reflect the new page - unless we're already moving through 
+            // the browser history, in which case these values are already set.
+            if(currentPage.historical === false) {
+                if(firstLoad === false) {
+                    history.pushState(currentPage, currentPage.title, "/index.html#" + currentPage.url);
+                    if(logging===true) console.log("History entry added: ");
+                    if(logging===true) console.log(currentPage, "\n\n");
+                } else {
+                    history.replaceState(currentPage, currentPage.title, "/index.html#" + currentPage.url);
+                    if(logging===true) console.log("History entry replaced (first load): ");
+                    if(logging===true) console.log(currentPage, "\n\n");
+                }
+            }
+
+            // Update page title
+            document.querySelector("title").innerHTML = currentPage.title;
+
+            // Make current nav link have a solid underline (and reset ones that were previously clicked)
+            (function currentPageNavLinkUnderline() {
+                var a = document.querySelectorAll(".link-nav");         // Get the nav links.
+                var b = currentPage.url;                                // So we can type less
+
+                for(var i = 0, l = a.length; i < l; i ++) {
+                    a[i].classList.remove("u-_is-current-nav-link");
+                }
+
+                if(b === "/_posts.html" || b === "/_work.html" || b === "/_me.html") {
+                    document.querySelector('.link-nav[href*="' + b + '"]').classList.add("u-_is-current-nav-link");
+                }
+            })();
+
+            // Listen for clicks on the page
+            document.body.addEventListener("click", clickHandler.exe, false);
+
+            firstLoad = false;
+        }
+
+    </script>
+    <script src="/js/core.js"></script>
+</body>
+</html>
