@@ -1,0 +1,37 @@
+build
+    start web server and open browser OR start browser sync
+    watch files
+        html
+            - compile html templates
+            - markdown
+        css
+            - compile sass
+                postcss cssnext (+autoprefixer)
+        js
+            concat js
+                babel
+    optimize images (gulp-cache to only optimize each image once)
+    copy other files
+
+
+
+lint build
+    lint html
+    lint css/sass
+    lint js
+        perform js unit tests
+
+
+
+dist build (from build dir)
+    clean destination dir
+        css-colorguard, postcss stylelint
+        html
+            minify html
+        css
+            - remove unused css with unCSS
+            minify css
+        js
+            minify & uglify js
+        optimize images (gulp-cache to only optimize each image once)
+        copy other files
