@@ -63,18 +63,6 @@ gulp.task("default", gulp.series(
     )
 ))
 
-// Build project
-gulp.task("build", gulp.parallel(
-    buildHTML,
-    buildCSS,
-    buildJS,
-    copyImg,
-    // copyMiscToBuild // Uncomment if needed; otherwise gives an error if there aren"t any files to copy.
-))
-
-// Watch files and rebuild on change
-gulp.task("watchAndRebuild", watchAndRebuild)
-
 // Lint html, css, js in build dir
 gulp.task("lintHTML", lintHTML)
 gulp.task("lintCSS", lintCSS)
@@ -162,7 +150,7 @@ function buildJS(done) {
 
 // Copy images from src
 function copyImg(done) {
-    del(paths.buildsrc.img)
+    del(paths.buildsrc.img, { since: gulp.lastRun("default") })
     return gulp.src(paths.src.img)
         .pipe(gulp.dest(paths.build.img))
     done()
@@ -224,7 +212,7 @@ function cleanDist(done) {
 
 // Optimize images
 function distImg(done) {
-  return gulp.src(paths.src.img /*, {since: gulp.lastRun("default")}*/)
+  return gulp.src(paths.src.img)
     .pipe(imagemin([
         imagemin.gifsicle({interlaced: true}),
         imagemin.jpegtran({progressive: true}),
