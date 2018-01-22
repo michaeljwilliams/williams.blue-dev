@@ -13,7 +13,7 @@ const   gulp = require("gulp"),
         csslint = require("gulp-csslint"),
         htmllint = require("gulp-htmllint"),
         htmlmin = require("gulp-htmlmin"),
-        cleanCSS = require("gulp-clean-css")
+        cleanCSS = require("gulp-clean-css");
 
 const paths = {
     "src": {
@@ -44,7 +44,7 @@ const paths = {
         "js": "../williams.blue/js/",
         "img": "../williams.blue/img"
     }
-}
+};
 
 
 
@@ -61,12 +61,12 @@ gulp.task("default", gulp.series(
         watchAndRebuild,
         startBrowserSync
     )
-))
+));
 
 // Lint html, css, js in build dir
-gulp.task("lintHTML", lintHTML)
-gulp.task("lintCSS", lintCSS)
-gulp.task("lintJS", lintJS)
+gulp.task("lintHTML", lintHTML);
+gulp.task("lintCSS", lintCSS);
+gulp.task("lintJS", lintJS);
 
 // Dist build
 gulp.task("dist", gulp.series(
@@ -78,12 +78,12 @@ gulp.task("dist", gulp.series(
         distCSS,
         distJS,
     ),
-))
+));
 
 
 
 // BUILD ///////////////////////////////////////////////////////////////////////////////////////////
-const miscFilesToCopy = []
+const miscFilesToCopy = [];
 
 // Start browser sync
 function startBrowserSync() {
@@ -92,17 +92,17 @@ function startBrowserSync() {
             baseDir: paths.build.i
         }
     })
-}
+};
 
 // Watch files and build on change
 function watchAndRebuild() {
-    const watcher = [
-        gulp.watch(paths.src.html, buildHTML),
-        gulp.watch(paths.src.css, buildCSS),
-        gulp.watch(paths.src.js, buildJS),
-        gulp.watch(paths.src.img, copyImg),
-        gulp.watch(miscFilesToCopy, copyMiscToBuild)
-    ]
+    const watcher = 
+    [   gulp.watch(paths.src.html, buildHTML)
+    ,   gulp.watch(paths.src.css, buildCSS)
+    ,   gulp.watch(paths.src.js, buildJS)
+    ,   gulp.watch(paths.src.img, copyImg)
+    ,   gulp.watch(miscFilesToCopy, copyMiscToBuild)
+    ];
 
     for(let each of watcher) {
         each
@@ -111,28 +111,28 @@ function watchAndRebuild() {
             .on("change", path => console.log(`File ${path} changed.`))
             .on("unlink", path => console.log(`File ${path} was removed.`))
             .on("addDir", path => console.log(`Directory ${path} was added.`))
-            .on("unlinkDir", path => console.log(`Directory ${path} was removed.`))
-    }
-}
+            .on("unlinkDir", path => console.log(`Directory ${path} was removed.`));
+    };
+};
 
 // Build HTML
 function buildHTML(done) {
-    del(paths.buildsrc.html)
+    del(paths.buildsrc.html);
     return gulp.src(paths.src.html)
-        .pipe(gulp.dest(paths.build.html))
-    done()
-}
+        .pipe(gulp.dest(paths.build.html));
+    done();
+};
 
 // Build CSS
 function buildCSS(done) {
-    del(paths.buildsrc.css)
+    del(paths.buildsrc.css);
     return gulp.src(paths.src.css)
         .pipe(sourcemaps.init())
         .pipe(postcss([ cssnext() ])) // precss, postcss-utilities, postcss-sprites, postcss-assets
         .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest(paths.build.css))
-    done()
-}
+        .pipe(gulp.dest(paths.build.css));
+    done();
+};
 
 // Build JS
 function buildJS(done) {
@@ -146,7 +146,7 @@ function buildJS(done) {
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.build.js))
     done()
-}
+};
 
 // Copy images from src
 function copyImg(done) {
@@ -154,14 +154,14 @@ function copyImg(done) {
     return gulp.src(paths.src.img)
         .pipe(gulp.dest(paths.build.img))
     done()
-}
+};
 
 // Copy miscellaneous files to build
 function copyMiscToBuild(done) {
     return gulp.src(miscFilesToCopy)
         .pipe(gulp.dest(paths.build.i))
     done()
-}
+};
 
 // LINT ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -170,7 +170,7 @@ function lintHTML(done) {
     return gulp.src(paths.buildsrc.html)
         .pipe(htmllint())
     done()
-}
+};
 
 // Lint CSS
 function lintCSS(done) {
@@ -178,7 +178,7 @@ function lintCSS(done) {
         .pipe(csslint())
         .pipe(csslint.formatter())
     done()
-}
+};
 
 // Lint JS
 function lintJS(done) {
@@ -186,7 +186,7 @@ function lintJS(done) {
         .pipe(jshint())
         .pipe(jshint.reporter("default"))
     done()
-}
+};
 
 // DIST ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -207,8 +207,8 @@ function cleanDist(done) {
     }).then(paths => {
         console.log('Deleted files in dist dir:\n', paths.join('\n'))
     })
-    done()
-}
+    done();
+};
 
 // Optimize images
 function distImg(done) {
@@ -223,34 +223,34 @@ function distImg(done) {
                 {cleanupIDs: true}
             ]
         })
-    ]))
+    ]));
     .pipe(gulp.dest(paths.dist.img));
-    done()
-}
+    done();
+};
 
 // Copy miscellaneous files to dist
 function copyMiscToDist(done) {
     return gulp.src(miscFilesToCopy)
-        .pipe(gulp.dest(paths.dist.i))
-    done()
-}
+        .pipe(gulp.dest(paths.dist.i));
+    done();
+};
 
 // Dist HTML
 function distHTML(done) {
     return gulp.src(paths.src.html)
         .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest(paths.dist.html))
-    done()
-}
+        .pipe(gulp.dest(paths.dist.html));
+    done();
+};
 
 // Dist CSS
 function distCSS(done) {
     return gulp.src(paths.src.css)
         .pipe(postcss([ cssnext() ])) // precss, postcss-utilities, postcss-sprites, postcss-assets
         .pipe(cleanCSS())
-        .pipe(gulp.dest(paths.dist.css))
-    done()
-}
+        .pipe(gulp.dest(paths.dist.css));
+    done();
+};
 
 // Dist JS
 function distJS(done) {
@@ -260,6 +260,6 @@ function distJS(done) {
         }))
         //.pipe(concat("all.js"))
         .pipe(uglify())
-        .pipe(gulp.dest(paths.dist.js))
-    done()
-}
+        .pipe(gulp.dest(paths.dist.js));
+    done();
+};
