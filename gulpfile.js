@@ -223,7 +223,7 @@ function distImg(done) {
                 {cleanupIDs: true}
             ]
         })
-    ]));
+    ]))
     .pipe(gulp.dest(paths.dist.img));
     done();
 };
