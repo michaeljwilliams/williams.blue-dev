@@ -14,6 +14,12 @@
         <time>{{$ post.date $}}</time>
     </div>
 
+    <div class="u-notice-body">
+        <p>
+            This post is out of date. I'm now using my <a href="https://www.npmjs.com/package/peppermint" target=_blank>Peppermint</a> templating engine with Gulp for static site generation. If you're interested in the code or concepts in this post, you can still check out the old source code <a href="https://github.com/michaeljwilliams/williams.blue-dev/tree/SPA" target=_blank>here</a>.
+        </p>
+    </div>
+
     <div class="paragraph-group">
         <p>
             Since I graduated from UCSD, I have finally had time to remake my personal site, which I just launched! In this post I'll talk about the design and development decisions that I made while building it.
@@ -23,13 +29,13 @@
     <div class="paragraph-group">
         <h2>Working with static hosting</h2>
         <p>
-            After I made the decision to rebuild my personal website, the first thing I had to consider was the hosting situation. I hosted the previous version of this site on GitHub, as a <a href="https://help.github.com/articles/what-is-github-pages/">GitHub Pages</a> site, and I decided that I wanted to continue with GitHub as my hosting provider because it's fast, reliable, <b>free</b>, and really easy to develop with. The source directory of a GitHub Pages site is just like any other repository on GitHub, which means that you can make some changes to your site, push the changes to GitHub, and they're live! Easy!<sup><span class="u-link-onpage" data-link-onpage="#footnote-1">1</span></sup>
+            After I made the decision to rebuild my personal website, the first thing I had to consider was the hosting situation. I hosted the previous version of this site on GitHub, as a <a href="https://help.github.com/articles/what-is-github-pages/" target=_blank>GitHub Pages</a> site, and I decided that I wanted to continue with GitHub as my hosting provider because it's fast, reliable, <b>free</b>, and really easy to develop with. The source directory of a GitHub Pages site is just like any other repository on GitHub, which means that you can make some changes to your site, push the changes to GitHub, and they're live! Easy!<sup><span class="u-link-onpage" data-link-onpage="#footnote-1">1</span></sup>
         </p>
         <p>
-            The major problem with GitHub Pages, however, is that it is a <b>static host</b>. There is no ability to use Node.js, PHP, ASP, or anything else that dynamic servers usually use. GitHub provides only one option to help with static site generation/templating: <a href="https://jekyllrb.com/">Jekyll</a>. I used Jekyll for the previous version of this site and wasn't a big fan of it. That leaves me with a server that just dishes out whatever the source files are.
+            The major problem with GitHub Pages, however, is that it is a <b>static host</b>. There is no ability to use Node.js, PHP, ASP, or anything else that dynamic servers usually use. GitHub provides only one option to help with static site generation/templating: <a href="https://jekyllrb.com/" target=_blank>Jekyll</a>. I used Jekyll for the previous version of this site and wasn't a big fan of it. That leaves me with a server that just dishes out whatever the source files are.
         </p>
         <p>
-            With GitHub on the backend, I was determined to implement a page-generation system to overcome the limitations of my static host. After all, I don't want to spend my time editing a bunch of files because I changed one thing in the header of the site. This templating system would have to be implemented on the client side, of course, in JavaScript. These circumstances made me decide to turn my site into a full-blown SPA—a <a href="https://en.wikipedia.org/wiki/Single-page_application">single page application</a>.
+            With GitHub on the backend, I was determined to implement a page-generation system to overcome the limitations of my static host. After all, I don't want to spend my time editing a bunch of files because I changed one thing in the header of the site. This templating system would have to be implemented on the client side, of course, in JavaScript. These circumstances made me decide to turn my site into a full-blown SPA—a <a href="https://en.wikipedia.org/wiki/Single-page_application" target=_blank>single page application</a>.
         </p>
         <p>
             This is where most people would turn to a third-party library like React to do the heavy lifting for them. However, I had a strong desire not to use any third-party libaries for this project. I intended to make a nice, simple site, and I wanted to keep both the codebase and page weight as lean as possible. Additionally, I didn't want to spend a bunch of time figuring out which library or libraries to use, and then more time learning how to implement those tools. Finally, I thought it would be a fun project and good development experience for me to do everything myself. Thus, all of this site runs on my own vanilla JS.
@@ -53,7 +59,7 @@
             My next step was to come up with a system that would emulate the way URLs normally work—that is, a unique link for each page of content. This would make it easy for users to bookmark and share links, and search engines to index pages. In the URL pattern I created, each URL represents the path to the HTML file that contains the content on that page. This is basically the way that traditional websites are organized, which I think is a good organization for most sites. Each URL is prefixed with <code>index.html#</code> (the Single Page), which is followed by the absolute path to the HTML file with the relevant content. For example, here is the link to my home page: <code>index.html#/_home.html</code>.
         </p>
         <p>
-            When index.html is downloaded by a browser, the main script checks if the URL has <code>#/</code> in it, and if it does, it uses AJAX to load the page indicated by the rest of the URL. This ensures that users can share or bookmark any page on my site without issue. It also gives me a nice way to make all my links (as in <code>&lt;a&gt;</code> tags) look and act normally. No <code>javascript:void(0)</code> here! If a user copies a link URL and opens it in a new tab, or shares it, it'll work. If they click on a link, the script retrieves the content in the HTML file indicated by the link URL, and replaces the old content with the new content. 
+            When index.html is downloaded by a browser, the main script checks if the URL has <code>#/</code> in it, and if it does, it uses AJAX to load the page indicated by the rest of the URL. This ensures that users can share or bookmark any page on my site without issue. It also gives me a nice way to make all my links (as in <code>&lt;a&gt;</code> tags) look and act normally. No <code>javascript:void(0)</code> here! If a user copies a link URL and opens it in a new tab, or shares it, it'll work. If they click on a link, the script retrieves the content in the HTML file indicated by the link URL, and replaces the old content with the new content.
         </p>
         <p>
             Unlike many SPAs, I also took the step of trying to support users being able to open a link in a new tab by middle clicking or holding down control or the Apple command key. It works (<a href="index.html">link</a> if you want to try), but not perfectly. There is no way to determine whether the user wants to open the new tab in the background or switch to it immediately, because that's a personal browser setting. As I said, it's hard to perfectly mimic the browser's functionality.
