@@ -1,68 +1,74 @@
+{{& "./src/pep_includes/_head.html", {
+    "currentPage": {
+        "title": "Michael Williams"
+    }
+} &}}
+
+{{[
+    const post = require(`${process.cwd()}/src/posts/posts.json`)[3];
+]}}
+<main>
 <section class="blog-post">
-<div class="post-start">
-    <h1>Graduation</h1>
-    <time>29 September, 2017</time>
-</div>
-<div class="paragraph-group">
-    <p>
-    After finishing my college education at UC San Diego, I have finally graduated with a bachelor's degree in Cognitive Science! Most people, when I tell them that I study cognitive science, don't have a good idea of what that means, so I'll explain a bit about cognitive science and the sort of things I learned during my studies at UCSD. On a side note, UCSD founded the first <a href="http://www.cogsci.ucsd.edu/about/dept-history.html" target="_blank">Cognitive Science department</a> in the world(!) and has been pioneering the field ever since.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>What is cognitive science?</h2>
-    <p>
-    Cognitive science is an interdisciplinary subject that incorporates several different fields of study. Each of these fields is an entire realm of research on its own, which makes the study of cognition a very broad and diverse subject. Cognitive science is mainly comprised of neuroscience, psychology, and computer science, but also involves linguistics, anthropology, philosophy, and more. The three main fields that compose cognitive science form a currciculum like the following:
-    </p>
-    <ul>
-        <li>
-            <b>Neuroscience</b>: The anatomy of the nervous system is studied in depth. This includes the brain and its various structures, the spinal cord, sensory organs (eyes, ears, skin, etc.) and a few other organs, such as those that release hormones. Simultaneously, the functions of all of these organs and the physical and biochemical mechanisms behind their processes are also studied. The individual neuron is examined as well. Remembering all the Latin names for various structures was quite difficult, which made this the hardest area for me.
-        </li>
-        <br>
-        <li>
-            <b>Psychology</b>: Human behavior is studied extensively, from the time a fetus is in the womb until old age. Topics include language, culture, development, sociality, sexuality, and more. The history and varying opinions in the psychological field are also discussed.
-        </li>
-        <br>
-        <li>
-            <b>Computer science</b>: There were essentially two ways in which I studied computation in relation to the human mind. One was humanity's attempt to build digital models similar to our own brains. I studied learning algorithms and neural networks, and coded a rudimentary neural net. The other was studying human-computer interaction—how people interact with computers and other devices. This involved learning how to design better <em>for users</em> and doing analyses to figure out what worked best. This was/is my favorite topic.
+    <div class="post-start">
+        <h1>{{$ post.title $}}</h1>
+        <time>{{$ post.date $}}</time>
+    </div>
+    <div class="paragraph-group">
+        <p>
+        After finishing my college education at UC San Diego, I have finally graduated with a bachelor's degree in Cognitive Science! Most people, when I tell them that I study cognitive science, don't have a good idea of what that means, so I'll explain a bit about cognitive science and the sort of things I learned during my studies at UCSD. On a side note, UCSD founded the first <a href="http://www.cogsci.ucsd.edu/about/dept-history.html" target="_blank">Cognitive Science department</a> in the world(!) and has been pioneering the field ever since.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>What is cognitive science?</h2>
+        <p>
+        Cognitive science is an interdisciplinary subject that incorporates several different fields of study. Each of these fields is an entire realm of research on its own, which makes the study of cognition a very broad and diverse subject. Cognitive science is mainly comprised of neuroscience, psychology, and computer science, but also involves linguistics, anthropology, philosophy, and more. The three main fields that compose cognitive science form a currciculum like the following:
+        </p>
+        <ul>
+            <li>
+                <b>Neuroscience</b>: The anatomy of the nervous system is studied in depth. This includes the brain and its various structures, the spinal cord, sensory organs (eyes, ears, skin, etc.) and a few other organs, such as those that release hormones. Simultaneously, the functions of all of these organs and the physical and biochemical mechanisms behind their processes are also studied. The individual neuron is examined as well. Remembering all the Latin names for various structures was quite difficult, which made this the hardest area for me.
+            </li>
             <br>
-            This area was generally the easiest for me; I've always been a tech guy.
+            <li>
+                <b>Psychology</b>: Human behavior is studied extensively, from the time a fetus is in the womb until old age. Topics include language, culture, development, sociality, sexuality, and more. The history and varying opinions in the psychological field are also discussed.
+            </li>
+            <br>
+            <li>
+                <b>Computer science</b>: There were essentially two ways in which I studied computation in relation to the human mind. One was humanity's attempt to build digital models similar to our own brains. I studied learning algorithms and neural networks, and coded a rudimentary neural net. The other was studying human-computer interaction—how people interact with computers and other devices. This involved learning how to design better <em>for users</em> and doing analyses to figure out what worked best. This was/is my favorite topic.
+                <br>
+                This area was generally the easiest for me; I've always been a tech guy.
+            </li>
+        </ul>
+    </div>
+    <div class="paragraph-group">
+        <h2>In summary</h2>
+        <p>
+        I personally think that cognitive science is best summed up as figuring out the answers to the question, <strong>How do people think?</strong> 
+        <sup>
+            <span class="u-link-onpage" data-link-onpage="#footnote-1">1</span>
+            <span class="u-link-onpage" data-link-onpage="#footnote-2">2</span>
+        </sup>
+        </p>
+        <p>
+        Cognitive science as a field approaches this question at the physical/neural level, at the level of thought and behavior, and at the level of reconstruction, via computer modeling.
+        </p>
+    </div>
+
+    <div class="paragraph-group">
+        <p>
+        Lastly, since I graduated I have finally had time to rebuild my personal site, which I just launched! Take a look at <a href="/posts/20171014-hello-again-world.html">this post</a> for my thoughts on its development.
+        </p>
+    </div>
+
+
+    <ol class="footnotes">
+        <p>Notes</p>
+        <li id="footnote-1">
+            Animal cognition lies within the realm of cognitive science, too.
         </li>
-    </ul>
-</div>
-<div class="paragraph-group">
-    <h2>In summary</h2>
-    <p>
-    I personally think that cognitive science is best summed up as figuring out the answers to the question, <strong>How do people think?</strong> 
-    <sup>
-        <span class="u-link-onpage" data-link-onpage="#footnote-1">1</span>
-        <span class="u-link-onpage" data-link-onpage="#footnote-2">2</span>
-    </sup>
-    </p>
-    <p>
-    Cognitive science as a field approaches this question at the physical/neural level, at the level of thought and behavior, and at the level of reconstruction, via computer modeling.
-    </p>
-</div>
-
-<div class="paragraph-group">
-    <p>
-    Lastly, since I graduated I have finally had time to rebuild my personal site, which I just launched! Take a look at <a href="#/posts/20171014-hello-again-world.html">this post</a> for my thoughts on its development.
-    </p>
-</div>
-
-
-<ol class="footnotes">
-    <p>Notes</p>
-    <li id="footnote-1">
-        Animal cognition lies within the realm of cognitive science, too.
-    </li>
-    <li id="footnote-2">
-        If you want a slightly different take, here is <a href="http://www.cogsci.ucsd.edu/about/index.html" target="_blank">UCSD's explanation</a> of cognitive science.
-    </li>
-</ol>
+        <li id="footnote-2">
+            If you want a slightly different take, here is <a href="http://www.cogsci.ucsd.edu/about/index.html" target="_blank">UCSD's explanation</a> of cognitive science.
+        </li>
+    </ol>
 
 </section>
-
-<script>
-    currentPage.title = "Graduation - Michael Williams";
-    runAfterPageLoad();
-</script>
+</main>

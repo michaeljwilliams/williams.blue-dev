@@ -1,5 +1,5 @@
 const   gulp = require("gulp"),
-        browserSync = require("browser-sync").create()
+        browserSync = require("browser-sync").create(),
         jshint = require("gulp-jshint"),
         concat = require("gulp-concat"),
         uglify = require("gulp-uglify"),
@@ -13,12 +13,16 @@ const   gulp = require("gulp"),
         csslint = require("gulp-csslint"),
         htmllint = require("gulp-htmllint"),
         htmlmin = require("gulp-htmlmin"),
-        cleanCSS = require("gulp-clean-css");
+        cleanCSS = require("gulp-clean-css"),
+
+        pep = require("../gulp-peppermint/index.js"),
+
+        pepContext = require("./src/__Pep.json");
 
 const paths = {
     "src": {
         "i": "src", // Stands for "initial"
-        "html": ["src/**/*.html"],
+        "html": ["src/**/*.html", "!src/pep_includes/**/*.*"],
         "css": ["src/css/**/*.css"],
         "js": ["src/js/**/*.js"],
         "img": ["src/img/**/*.*"]
@@ -32,7 +36,7 @@ const paths = {
     },
     "buildsrc": {
         "i": "build",
-        "html": ["build/**/*.html"],
+        "html": ["build/*.html"],
         "css": ["build/css/**/*.css"],
         "js": ["build/js/**/*.js"],
         "img": ["build/img/**/*.*"]
@@ -119,6 +123,7 @@ function watchAndRebuild() {
 function buildHTML(done) {
     del(paths.buildsrc.html);
     return gulp.src(paths.src.html)
+        .pipe(pep(pepContext))
         .pipe(gulp.dest(paths.build.html));
     done();
 };
@@ -238,6 +243,7 @@ function copyMiscToDist(done) {
 // Dist HTML
 function distHTML(done) {
     return gulp.src(paths.src.html)
+        .pipe(pep(pepContext))
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest(paths.dist.html));
     done();

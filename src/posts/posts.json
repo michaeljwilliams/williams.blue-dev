@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Node.js notes",
+        "link": "/posts/20150609-nodejs-notes.html",
+        "date": "9 June, 2015",
+        "blurb": "I decided to read through the whole Node.js API and see what useful bits I could find. In order to have an easily-digested overview of the API I wrote these notes on all the modules and some methods I thought would come in handy."
+    },
+    {
+        "title": ":hover is (mostly) dead",
+        "link": "/posts/20150719-hover-mostly-dead.html",
+        "date": "19 July, 2015",
+        "blurb": "<code>:hover</code> isn't really dead. Its potential and real-world usage has tapered off, but it still has a place in our code. <code>:hover</code> is like the Man In Black—as Miracle Max would say, it just so happens that our friend here is only <em>mostly</em> dead."
+    },
+    {
+        "title": "Nexus 5X/6P Bootloop Fix",
+        "link": "/posts/20170920-nexus5x-bootloop-fix.html",
+        "date": "20 September, 2017",
+        "blurb": "The Android modding community has created a workaround for the bootloop issue common to the LG Nexus 5X and Huawei Nexus 6P that leaves the phone endlessly rebooting—effectively useless and dead."
+    },
+    {
+        "title": "Graduation",
+        "link": "/posts/20170929-graduation.html",
+        "date": "29 September, 2017",
+        "blurb": "After a tough two years of finishing my college education at UC San Diego, I have finally graduated with a bachelor's degree in Cognitive Science! Wait...what is cognitive science??"
+    },
+    {
+        "title": "Hello (again) world",
+        "link": "/posts/20171014-hello-again-world.html",
+        "date": "14 October, 2017",
+        "blurb": "Since I graduated from UCSD, I have finally had time to remake my personal site, which I just launched! In this post I'll talk about the design and development decisions that I made while building it."
+    }
+]

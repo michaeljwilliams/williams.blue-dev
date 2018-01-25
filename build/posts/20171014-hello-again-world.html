@@ -1,93 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Michael Williams</title>
+    <meta content="Michael Williams: designer, developer, and user experience activist" name="description">
+    <meta content="Michael Williams" name="author">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <link href="/img/favicon.svg" rel="icon" type="icon">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+     
+    <header>
+        <nav>
+            <a href="/index.html" class="u-link-reset masthead">Michael Williams</a>
+            <a href="/posts.html" class="link-nav">Blog</a>
+            <a href="/work.html" class="link-nav">Work</a>
+            <a href="/me.html" class="link-nav">Me</a>
+        </nav>
+    </header>
+
+
+<main>
 <section class="blog-post">
-<div class="post-start">
-    <h1>Hello (again) world</h1>
-    <time>14 October, 2017</time>
-</div>
+    <div class="post-start">
+        <h1>Hello (again) world</h1>
+        <time>14 October, 2017</time>
+    </div>
 
-<div class="paragraph-group">
-    <p>
-        Since I graduated from UCSD, I have finally had time to remake my personal site, which I just launched! In this post I'll talk about the design and development decisions that I made while building it.
-    </p>
-</div>
+    <div class="paragraph-group">
+        <p>
+            Since I graduated from UCSD, I have finally had time to remake my personal site, which I just launched! In this post I'll talk about the design and development decisions that I made while building it.
+        </p>
+    </div>
 
-<div class="paragraph-group">
-    <h2>Working with static hosting</h2>
-    <p>
-        After I made the decision to rebuild my personal website, the first thing I had to consider was the hosting situation. I hosted the previous version of this site on GitHub, as a <a href="https://help.github.com/articles/what-is-github-pages/">GitHub Pages</a> site, and I decided that I wanted to continue with GitHub as my hosting provider because it's fast, reliable, <b>free</b>, and really easy to develop with. The source directory of a GitHub Pages site is just like any other repository on GitHub, which means that you can make some changes to your site, push the changes to GitHub, and they're live! Easy!<sup><span class="u-link-onpage" data-link-onpage="#footnote-1">1</span></sup>
-    </p>
-    <p>
-        The major problem with GitHub Pages, however, is that it is a <b>static host</b>. There is no ability to use Node.js, PHP, ASP, or anything else that dynamic servers usually use. GitHub provides only one option to help with static site generation/templating: <a href="https://jekyllrb.com/">Jekyll</a>. I used Jekyll for the previous version of this site and wasn't a big fan of it. That leaves me with a server that just dishes out whatever the source files are.
-    </p>
-    <p>
-        With GitHub on the backend, I was determined to implement a page-generation system to overcome the limitations of my static host. After all, I don't want to spend my time editing a bunch of files because I changed one thing in the header of the site. This templating system would have to be implemented on the client side, of course, in JavaScript. These circumstances made me decide to turn my site into a full-blown SPA—a <a href="https://en.wikipedia.org/wiki/Single-page_application">single page application</a>.
-    </p>
-    <p>
-        This is where most people would turn to a third-party library like React to do the heavy lifting for them. However, I had a strong desire not to use any third-party libaries for this project. I intended to make a nice, simple site, and I wanted to keep both the codebase and page weight as lean as possible. Additionally, I didn't want to spend a bunch of time figuring out which library or libraries to use, and then more time learning how to implement those tools. Finally, I thought it would be a fun project and good development experience for me to do everything myself. Thus, all of this site runs on my own vanilla JS.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>To SPA or not to SPA</h2>
-    <p>
-        The SPA model has its advantages and disadvantages. The main disadvantage, which is the cause of several specfic pains for developers, is that a SPA is much more complex than a regular set of web pages. By limiting your site or app to a single, actual HTML page, you are unable to use several things that web browsers give you for free. The main ones are history management, link behavior, and setting the URL/value in the address bar.<sup><span class="u-link-onpage" data-link-onpage="#footnote-2">2</span></sup> So, in a SPA, you have to remake all of these things, which is a substantial amount of code to write. If you instead choose to obtain these features by using a library, it can really add to your page weight. Furthermore, these replacements probably won't end up working quite as well as normal browser behavior. This is why it is often a better choice to create a website with a more traditional architecture.<sup><span class="u-link-onpage" data-link-onpage="#footnote-3">3</span></sup>
-    </p>
-    <p>
-        Single page applications also have some pretty great benefits, such as providing a smoother, faster experience (if done well), and much better control over appearance. These benefits might be necessary to develop a webapp with a rich user interface, but they aren't necessary for most websites. At any rate, due to my host's lack of a backend to generate pages, I elected to create a SPA so that I wouldn't have to manually edit many pages or deal with static site generation, and I predicted that I could avoid some of the pitfalls of SPAs by keeping my site nice and simple.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>Building a SPA</h2>
-    <p>
-        Since SPAs need JavaScript to function, any user (or bot) that visits your site without JS is going to have a bad time. These days almost everybody uses a web browser with JavaScript, including search engine bots, so this isn't much of a concern. However, that doesn't mean we shouldn't have <em>something</em> there for the occasional user who visits without JS. So my first step was to add the most important content to the actual index.html file that the browser receives. This content is replaced with the intended homepage via JavaScript, if it's enabled.
-    </p>
-    <p>
-        My next step was to come up with a system that would emulate the way URLs normally work—that is, a unique link for each page of content. This would make it easy for users to bookmark and share links, and search engines to index pages. In the URL pattern I created, each URL represents the path to the HTML file that contains the content on that page. This is basically the way that traditional websites are organized, which I think is a good organization for most sites. Each URL is prefixed with <code>index.html#</code> (the Single Page), which is followed by the absolute path to the HTML file with the relevant content. For example, here is the link to my home page: <code>index.html#/_home.html</code>.
-    </p>
-    <p>
-        When index.html is downloaded by a browser, the main script checks if the URL has <code>#/</code> in it, and if it does, it uses AJAX to load the page indicated by the rest of the URL. This ensures that users can share or bookmark any page on my site without issue. It also gives me a nice way to make all my links (as in <code>&lt;a&gt;</code> tags) look and act normally. No <code>javascript:void(0)</code> here! If a user copies a link URL and opens it in a new tab, or shares it, it'll work. If they click on a link, the script retrieves the content in the HTML file indicated by the link URL, and replaces the old content with the new content. 
-    </p>
-    <p>
-        Unlike many SPAs, I also took the step of trying to support users being able to open a link in a new tab by middle clicking or holding down control or the Apple command key. It works (<a href="#/_home.html">link</a> if you want to try), but not perfectly. There is no way to determine whether the user wants to open the new tab in the background or switch to it immediately, because that's a personal browser setting. As I said, it's hard to perfectly mimic the browser's functionality.
-    </p>
-    <p>
-        Managing browser history is the last main hurdle to building a working SPA. This isn't too difficult to do using <code>history.pushState()</code> and <code>window.onpopstate</code>. One thing to remember, though, is that you should keep track of when the user is moving through the browser history, versus making new requests.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>UX features</h2>
-    <p>
-        Now I'd like to expound on some of my features and design decisions that improve the user experience. You've probably noticed some of these already. First of all, I made sure that the text is large enough and has good contrast with the background. Many designers these days fall prey to making text too small, too thin, and too light (please no more light grey text on a white background). Another important part of the user experience is speed. My page downloads are pretty small, which helps the site feel more responsive. It also helps that after <code>index.html</code> initially loads, only the new content needs to be loaded.
-    </p>
-    <p>
-        Another of my design decisions meant to improve UX is keeping my links similar to what browsers already have by default. Many sites remove the underlines on links, but I kept them because they help distinguish links to the user. But I actually use a bottom border instead of an underline, because underlines get muddled up with letters that drop down, like g, p, and y. Example: <span class="u-link-pseudo">guppy</span> <span style="text-decoration: underline;">guppy</span>. I also have my links change on hover, to provide an additional cue to users with cursors. Finally, my links retain the default browser behavior of changing color after they've been visited. This is another thing many sites do away with, but it helps users keep track of what they've already looked at.
-    </p>
-    <p>
-        My favorite feature is my on-page link component. Footnotes are one place where I use this feature. There are several footnotes on this page, but here's another if you didn't look at any of the rest.<sup><span class="u-link-onpage" data-link-onpage="#footnote-4">4</span></sup> This feature solves some issues I've personally always had with regular on-page links like <code>&lt;a href="#some-content"&gt;some content&lt;a&gt;</code>. One issue is that when you click the link, it's often not immediately apparent what you're supposed to be looking at. I fixed that by briefly highlighting the destination content. The other issue is that there is often no easy way to go back to what you were looking at before. So, I auto-generate a button that takes you right back to the original content. Try it!
-    </p>
-</div>
+    <div class="paragraph-group">
+        <h2>Working with static hosting</h2>
+        <p>
+            After I made the decision to rebuild my personal website, the first thing I had to consider was the hosting situation. I hosted the previous version of this site on GitHub, as a <a href="https://help.github.com/articles/what-is-github-pages/">GitHub Pages</a> site, and I decided that I wanted to continue with GitHub as my hosting provider because it's fast, reliable, <b>free</b>, and really easy to develop with. The source directory of a GitHub Pages site is just like any other repository on GitHub, which means that you can make some changes to your site, push the changes to GitHub, and they're live! Easy!<sup><span class="u-link-onpage" data-link-onpage="#footnote-1">1</span></sup>
+        </p>
+        <p>
+            The major problem with GitHub Pages, however, is that it is a <b>static host</b>. There is no ability to use Node.js, PHP, ASP, or anything else that dynamic servers usually use. GitHub provides only one option to help with static site generation/templating: <a href="https://jekyllrb.com/">Jekyll</a>. I used Jekyll for the previous version of this site and wasn't a big fan of it. That leaves me with a server that just dishes out whatever the source files are.
+        </p>
+        <p>
+            With GitHub on the backend, I was determined to implement a page-generation system to overcome the limitations of my static host. After all, I don't want to spend my time editing a bunch of files because I changed one thing in the header of the site. This templating system would have to be implemented on the client side, of course, in JavaScript. These circumstances made me decide to turn my site into a full-blown SPA—a <a href="https://en.wikipedia.org/wiki/Single-page_application">single page application</a>.
+        </p>
+        <p>
+            This is where most people would turn to a third-party library like React to do the heavy lifting for them. However, I had a strong desire not to use any third-party libaries for this project. I intended to make a nice, simple site, and I wanted to keep both the codebase and page weight as lean as possible. Additionally, I didn't want to spend a bunch of time figuring out which library or libraries to use, and then more time learning how to implement those tools. Finally, I thought it would be a fun project and good development experience for me to do everything myself. Thus, all of this site runs on my own vanilla JS.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>To SPA or not to SPA</h2>
+        <p>
+            The SPA model has its advantages and disadvantages. The main disadvantage, which is the cause of several specfic pains for developers, is that a SPA is much more complex than a regular set of web pages. By limiting your site or app to a single, actual HTML page, you are unable to use several things that web browsers give you for free. The main ones are history management, link behavior, and setting the URL/value in the address bar.<sup><span class="u-link-onpage" data-link-onpage="#footnote-2">2</span></sup> So, in a SPA, you have to remake all of these things, which is a substantial amount of code to write. If you instead choose to obtain these features by using a library, it can really add to your page weight. Furthermore, these replacements probably won't end up working quite as well as normal browser behavior. This is why it is often a better choice to create a website with a more traditional architecture.<sup><span class="u-link-onpage" data-link-onpage="#footnote-3">3</span></sup>
+        </p>
+        <p>
+            Single page applications also have some pretty great benefits, such as providing a smoother, faster experience (if done well), and much better control over appearance. These benefits might be necessary to develop a webapp with a rich user interface, but they aren't necessary for most websites. At any rate, due to my host's lack of a backend to generate pages, I elected to create a SPA so that I wouldn't have to manually edit many pages or deal with static site generation, and I predicted that I could avoid some of the pitfalls of SPAs by keeping my site nice and simple.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>Building a SPA</h2>
+        <p>
+            Since SPAs need JavaScript to function, any user (or bot) that visits your site without JS is going to have a bad time. These days almost everybody uses a web browser with JavaScript, including search engine bots, so this isn't much of a concern. However, that doesn't mean we shouldn't have <em>something</em> there for the occasional user who visits without JS. So my first step was to add the most important content to the actual index.html file that the browser receives. This content is replaced with the intended homepage via JavaScript, if it's enabled.
+        </p>
+        <p>
+            My next step was to come up with a system that would emulate the way URLs normally work—that is, a unique link for each page of content. This would make it easy for users to bookmark and share links, and search engines to index pages. In the URL pattern I created, each URL represents the path to the HTML file that contains the content on that page. This is basically the way that traditional websites are organized, which I think is a good organization for most sites. Each URL is prefixed with <code>index.html#</code> (the Single Page), which is followed by the absolute path to the HTML file with the relevant content. For example, here is the link to my home page: <code>index.html#/_home.html</code>.
+        </p>
+        <p>
+            When index.html is downloaded by a browser, the main script checks if the URL has <code>#/</code> in it, and if it does, it uses AJAX to load the page indicated by the rest of the URL. This ensures that users can share or bookmark any page on my site without issue. It also gives me a nice way to make all my links (as in <code>&lt;a&gt;</code> tags) look and act normally. No <code>javascript:void(0)</code> here! If a user copies a link URL and opens it in a new tab, or shares it, it'll work. If they click on a link, the script retrieves the content in the HTML file indicated by the link URL, and replaces the old content with the new content. 
+        </p>
+        <p>
+            Unlike many SPAs, I also took the step of trying to support users being able to open a link in a new tab by middle clicking or holding down control or the Apple command key. It works (<a href="index.html">link</a> if you want to try), but not perfectly. There is no way to determine whether the user wants to open the new tab in the background or switch to it immediately, because that's a personal browser setting. As I said, it's hard to perfectly mimic the browser's functionality.
+        </p>
+        <p>
+            Managing browser history is the last main hurdle to building a working SPA. This isn't too difficult to do using <code>history.pushState()</code> and <code>window.onpopstate</code>. One thing to remember, though, is that you should keep track of when the user is moving through the browser history, versus making new requests.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>UX features</h2>
+        <p>
+            Now I'd like to expound on some of my features and design decisions that improve the user experience. You've probably noticed some of these already. First of all, I made sure that the text is large enough and has good contrast with the background. Many designers these days fall prey to making text too small, too thin, and too light (please no more light grey text on a white background). Another important part of the user experience is speed. My page downloads are pretty small, which helps the site feel more responsive. It also helps that after <code>index.html</code> initially loads, only the new content needs to be loaded.
+        </p>
+        <p>
+            Another of my design decisions meant to improve UX is keeping my links similar to what browsers already have by default. Many sites remove the underlines on links, but I kept them because they help distinguish links to the user. But I actually use a bottom border instead of an underline, because underlines get muddled up with letters that drop down, like g, p, and y. Example: <span class="u-link-pseudo">guppy</span> <span style="text-decoration: underline;">guppy</span>. I also have my links change on hover, to provide an additional cue to users with cursors. Finally, my links retain the default browser behavior of changing color after they've been visited. This is another thing many sites do away with, but it helps users keep track of what they've already looked at.
+        </p>
+        <p>
+            My favorite feature is my on-page link component. Footnotes are one place where I use this feature. There are several footnotes on this page, but here's another if you didn't look at any of the rest.<sup><span class="u-link-onpage" data-link-onpage="#footnote-4">4</span></sup> This feature solves some issues I've personally always had with regular on-page links like <code>&lt;a href="#some-content"&gt;some content&lt;a&gt;</code>. One issue is that when you click the link, it's often not immediately apparent what you're supposed to be looking at. I fixed that by briefly highlighting the destination content. The other issue is that there is often no easy way to go back to what you were looking at before. So, I auto-generate a button that takes you right back to the original content. Try it!
+        </p>
+    </div>
 
-<!--
-UX features: visited links, link bottom border (not underline)
--->
+    <!--
+    UX features: visited links, link bottom border (not underline)
+    -->
 
-<ol class="footnotes">
-    <p>Notes</p>
-    <li id="footnote-1">
-         For this site I have a development branch and a master branch, so that I can do extended development without pushing changes until I'm ready, while maintaining the versioning and off-site backup that GitHub provides. When I <em>am</em> ready, I just make a pull request and merge the changes into the live version.
-    </li>
-    <li id="footnote-2">
-         Since you can change the value in the address bar without actually navigating to a different URL, such as with <code>history.pushState()</code>, the value in the address bar and the URL are not always the same.
-    </li>
-    <li id="footnote-3">
-        The web was originally built for and meant for websites with individual pages, represented by individual HTML files. This model is very different from the app model, so a SPA architecture often makes more sense when you're building something more like an app than a website.
-    </li>
-    <li id="footnote-4">
-        Why hello there!
-    </li>
-</ol>
+    <ol class="footnotes">
+        <p>Notes</p>
+        <li id="footnote-1">
+             For this site I have a development branch and a master branch, so that I can do extended development without pushing changes until I'm ready, while maintaining the versioning and off-site backup that GitHub provides. When I <em>am</em> ready, I just make a pull request and merge the changes into the live version.
+        </li>
+        <li id="footnote-2">
+             Since you can change the value in the address bar without actually navigating to a different URL, such as with <code>history.pushState()</code>, the value in the address bar and the URL are not always the same.
+        </li>
+        <li id="footnote-3">
+            The web was originally built for and meant for websites with individual pages, represented by individual HTML files. This model is very different from the app model, so a SPA architecture often makes more sense when you're building something more like an app than a website.
+        </li>
+        <li id="footnote-4">
+            Why hello there!
+        </li>
+    </ol>
 
 </section>
+</main>
+    <footer>
+        <div class="social-links-div">
+            <a href="mailto:33a1eb@williams.blue" class="iconsprite iconsprite-email u-link-reset">Email</a>
+            <a href="https://github.com/michaeljwilliams" class="iconsprite iconsprite-github u-link-reset">Code</a>
+            <a href="https://open.spotify.com/user/mwilliaams" class="iconsprite iconsprite-spotify u-link-reset">I wanna rock!</a>
+        </div>
+        <small>Michael Williams</small>
+    </footer>
 
-<script>
-    currentPage.title = "Hello (again) world - Michael Williams";
-    runAfterPageLoad();
-</script>
+    <script src="/js/main.js"></script>
+</body>

@@ -1,0 +1,25 @@
+{{& "./src/pep_includes/_head.html", {
+    "currentPage": {
+        "title": "Michael Williams"
+    }
+} &}}
+
+{{[
+    const post = require(`${process.cwd()}/src/posts/posts.json`)[x]; <<< change post id
+]}}
+<main>
+<section class="blog-post">
+    <div class="post-start">
+        <h1>{{$ post.title $}}</h1>
+        <time>{{$ post.date $}}</time>
+    </div>
+
+    <div class="paragraph-group">
+        <h2>post subheading</h2>
+        <p>
+            paragraph
+        </p>
+    </div>
+
+</section>
+</main>

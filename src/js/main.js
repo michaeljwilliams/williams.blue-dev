@@ -1,8 +1,13 @@
-// core.js - JS that can run after content is loaded
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * main.js
+ */
+
+const currentPage = {
+    "url": window.location.pathname
+};
 
 // Handles all the clicks on the page. Decides which function to call when something is clicked.
-var clickHandler = {
+const clickHandler = {
     event: {},
     target: {}
 
@@ -18,22 +23,12 @@ var clickHandler = {
             console.log("    target: ", e.target, "\n\n");
         }
 
-        // Internal link: Check if target is an <a> and href starts with [#/]
-        if(e.target.nodeName === "A" && e.target.getAttribute("href").substring(0,2) === "#/") {
-            clickHandler.internalLinkWasClicked(e.target); 
-        }
-
-        // External link: Check if target is an <a> and first char in href is not [#]
-        if(e.target.nodeName === "A" && e.target.getAttribute("href").substring(0,1) !== "#") {
-            clickHandler.externalLinkWasClicked(e.target); 
-        }
-
         // On-page link
         if(e.target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(e.target);
         if(e.target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
 
         // Portfolio
-        if(currentPage.url === "/_work.html") {
+        if(currentPage.url === "/work.html") {
             // Portfolio image is clicked
             if(e.target.className.indexOf("portfolio-image") !== -1 ) {
                 portfolioHandler.imageWasClicked(e.target);
@@ -49,47 +44,9 @@ var clickHandler = {
         }
 
     } // end exe
-
-    // Run when an internal link is clicked (a williams.blue link)
-    ,internalLinkWasClicked: function(target) {
-        this.event.preventDefault();            // Prevent unwanted default behavior. [this] = clickHandler.
-        this.event.stopPropagation();           // We're done with the event now
-        var url = this.target.getAttribute("href").substring(1); // Url from root, eg [/_me.html]. No hash.
-
-        // If a link is clicked, we're not moving through history anymore.
-        currentPage.historical = false;
-
-        // Detect if user wanted to open link in new tab
-        if( this.event.ctrlKey || 
-            this.event.shiftKey || 
-            this.event.metaKey ||                           // Apple command key
-            (this.event.button && this.event.button == 1)   // Middle click
-        ) {
-            var newTabUrl = "/index.html#" + url;           // Create off-page link
-            var win = window.open(newTabUrl, "_blank");     // Create new tab
-            if(win) {           // If we were able to create the new tab (eg wasn't blocked by popup blocker)
-                win.focus();    // Go to new tab
-                return;         // Return from function so that content is not loaded in original page.
-            } else alert("Could not open link in new tab. Maybe it was blocked by your popup blocker.");
-        }
-
-        loadPage(url);      // Load content in current page.
-    }
-
-    // Run when an external link is clicked (not a williams.blue link)
-    ,externalLinkWasClicked: function(target) {
-        this.event.preventDefault();            // Prevent unwanted default behavior. [this] = clickHandler.
-        this.event.stopPropagation();           // We're done with the event now
-        var url = this.target.getAttribute("href");
-
-        var win = window.open(url, "_blank");     // Create new tab
-        if(win) {           // If we were able to create the new tab (eg wasn't blocked by popup blocker)
-            win.focus();    // Go to new tab
-        } else alert("Could not open link in new tab. Maybe it was blocked by your popup blocker.");        
-    }
 };
 
-var onpageLinkHandler = {
+const onpageLinkHandler = {
 
     link: {}
     ,element: {}
@@ -172,14 +129,21 @@ var onpageLinkHandler = {
     }
 };
 
-function hideLoadingNotification(){
-    loadingNotification.classList += " u-_is-absent";
+const currentPageNavLinkUnderline = function() {
+    var a = document.querySelectorAll(".link-nav");         // Get the nav links.
+    var b = currentPage.url;                                // So we can type less
+    if(b === "/posts.html" || b === "/work.html" || b === "/me.html") {
+        document.querySelector('.link-nav[href*="' + b + '"]').classList.add("u-_is-current-nav-link");
+    }
 };
 
-////////////////////////////////////////////////////////////////////////////////
-// code that runs
+// Code that runs //////////////////////////////////////////////////////////////////////////////////
+var logging = false;
+// if(logging===true)console.log("", "\n\n");
+console.log("logging: ", logging, "\n\n");
 
-// Runs after page is loaded
-(function runAfterPageLoadsCore() {
-    // hideLoadingNotification();
-})();
+// Listen for clicks on the page
+document.body.addEventListener("click", clickHandler.exe, false);
+
+// Underline current nav link
+currentPageNavLinkUnderline();

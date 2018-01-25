@@ -1,83 +1,89 @@
-<section class="blog-post">
-<div class="post-start">
-    <h1>Hover is (mostly) dead</h1>
-    <time>19 July, 2015</time>
-</div>
-<div class="paragraph-group">
-    <p>
-    I'm getting pretty tired of various media outlets ostentatiously proclaiming something's end in large text (Wired, I'm looking at you - THE PC IS DEAD, THE WEB IS DEAD, et cetera), so I'm not going to do that with our good friend <code>:hover</code>                    (that's the CSS pseudo class, but I'm talking about hover events in JS as well). Like PC's and the Web, <code>:hover</code> isn't really dead. Its potential and real-world usage has tapered off, sure, but it still has
-    a place in our code. <code>:hover</code> is like the Man In Black - as <a href="https://www.youtube.com/watch?v=D9tAKLTktY0" title="Miracle Max YouTube" target=_blank>Miracle Max</a> would say, it just so happens that our friend here
-    is only <em>mostly</em> dead.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>What happened to hovering?</h2>
-    <p>
-    I'm sure you already know. The explanation, plain and simple, is touch-based input. Touch-based devices have no way of detecting a hover (a few do, in fact, but not enough to count). Input devices with cursors, these being hover-capable,
-    such as a mouse, trackpad, console controller, or *gasp* even a trackball, are just one part of how people interact with their devices and with the Web. And that part is small and shrinking. It's likely that you're reading this on
-    a touch-based device right now.
-    </p>
-    <p>
-    Various studies done by various companies estimate that 40-60% of Web traffic is from a mobile device. Depending on the study, the estimate may or may not include tablet traffic, but factor those in as well. There are also the simultaneously
-    touch-capable and cursor-enabled devices, such as many laptops and desktops running some version of Windows 8. These devices are hover-capable, but as developers we cannot depend on the user to employ one method of interaction over
-    another, so count those in, too.
-    </p>
-    <p>
-    That's a lot of tapping. Considering the breadth of touch-based devices, I'd say it's likely that over half of the users on the Web are interacting with sites via tap. Is your site touch-friendly? (I hope so.) That's a question many other
-    articles and posts can help you answer. This post just deals with one part: <code>:hover</code>.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>Should I use :hover?</h2>
-    <p>
-    The answer, despite everything I've said so far, is yes! You should use <code>:hover</code>. But not a lot. You should definitely not <em>depend</em> on it. Let me bring back a buzzword coined in 2003 to sum up how you should use <code>:hover</code>:
-    Progressive Enhancement. Progressive Enhancement means (to me):
-    </p>
-    <ol>
-        <li>
-            Your site works, at least on a basic level, for all devices and users; that in the least, every user can access and understand your core content.
-        </li>
-        <li>
-            Devices with support for newer or different technology, features, et cetera, receive little “bonus” enhancements, that should, well, enhance the user's experience of your site.
-        </li>
-    </ol>
-    <p>
-    Bearing those points in mind, you should <em>never</em> use <code>:hover</code> as the only way to reveal a core piece of content or enable core functionality, because a tapping user might never see it.
-    </p>
-    <p>
-    Take the popular dropdown menu, which has several options that each reveal further choices when hovered over. In my experience this sometimes still works on a touchscreen because of workarounds added in by browser developers (this involves click, touch, hover, and other events all being sent with one tap), but this cannot be relied upon. If you want to use a dropdown menu, it should be tap-compatible.
-    </p>
-    <p>
-    At any rate, keeping good ol' PC's in mind, we can and should still add little bits of <code>:hover</code> to enhance the experience of a cursor user. As an example, on this site text links (<span class="u-link-pseudo">example</span>) change slightly when
-    hovered. This design tidbit is meant to be an extra little hint to users that the element they're focusing on can be interacted with. This functionality is completely unnecessary, but PC users are accustomed to it, so I added it to
-    my site to make it easier to use. There are, of course, other ways to use <code>:hover</code> to enhance the cursor experience, but my site just has the one example. Just keep in mind that only around half your
-    users might have a cursor, so I wouldn't go crazy with adding <code>:hover</code> enhancements; that could prove to be a lot of work with little gained to show for it.
-    </p>
-    <p>
-    A final note on the usage of <code>:hover</code>: keep your target userbase in mind. If you're designing an enterprise web app for a company to use internally and you know all the users will be on PC's, feel more free to use <code>:hover</code>.
-    But if you're designing a mobile app for iOS or Android there won't be any hovering going on unless your app is used by somebody in a helicopter.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>Bonus</h2>
-    <p>
-    "You've made touch devices sound less capable. Did we get anything good from touch as far as the Web goes?"</p>
-    <p>
-    Sort of. We got gestures. Mainly swiping. However, many of these are currently used by browsers themselves to do browser-related tasks such as going back a page, zooming, et cetera. And at the moment browsers don't have very similar implementations of touch events and whether or not click and other events are fired, which makes gestures much harder to code for. It can still be done, but that's getting into the territory of browser sniffing and loading libraries to help you out. Going down that path may work well for your project, but you have to consider the extra work you'll have on your end as well as the longer download and render times on the user's end. As such, the advantages of touchscreen interfaces largely remain to be seen on the Web.
-    </p>
-</div>
-<div class="paragraph-group">
-    <h2>Is there a future to hovering?</h2>
-    <p>
-    I keep reading that they're working on these awesome hoverboards, so one of these days we'll be zipping around on those, 'Back to the Future' style. I can't wait. Other than that, <code>:hover</code> for fingertips already exists somewhat on some devices. I don't think it's very useful, but it's around.
-    </p>
-    <p>
-    The thing about touchscreens is that people don't usually hover their finger over what they're looking at; they usually decide they want to tap something and <em>then</em> move the finger into play. This is unlike a mouse, where a user might be moving the cursor wherever they look, hovering over things as they go. I think that maybe firing hover events when a user pauses to look at an element for a while may prove useful, this being accomplished by eye tracking via front camera(s), but I'm not sure I like the privacy implications, such as sites remembering what I looked at, literally.
-    </p>
-</div>
-</section>
+{{& "./src/pep_includes/_head.html", {
+    "currentPage": {
+        "title": "Michael Williams"
+    }
+} &}}
 
-<script>
-    currentPage.title = "Hover is (mostly) dead - Michael Williams";
-    runAfterPageLoad();
-</script>
+{{[
+    const post = require(`${process.cwd()}/src/posts/posts.json`)[1];
+]}}
+<main>
+<section class="blog-post">
+    <div class="post-start">
+        <h1>{{$ post.title $}}</h1>
+        <time>{{$ post.date $}}</time>
+    </div>
+    <div class="paragraph-group">
+        <p>
+        I'm getting pretty tired of various media outlets ostentatiously proclaiming something's end in large text (Wired, I'm looking at you - THE PC IS DEAD, THE WEB IS DEAD, et cetera), so I'm not going to do that with our good friend <code>:hover</code>                    (that's the CSS pseudo class, but I'm talking about hover events in JS as well). Like PC's and the Web, <code>:hover</code> isn't really dead. Its potential and real-world usage has tapered off, sure, but it still has
+        a place in our code. <code>:hover</code> is like the Man In Black - as <a href="https://www.youtube.com/watch?v=D9tAKLTktY0" title="Miracle Max YouTube" target=_blank>Miracle Max</a> would say, it just so happens that our friend here
+        is only <em>mostly</em> dead.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>What happened to hovering?</h2>
+        <p>
+        I'm sure you already know. The explanation, plain and simple, is touch-based input. Touch-based devices have no way of detecting a hover (a few do, in fact, but not enough to count). Input devices with cursors, these being hover-capable,
+        such as a mouse, trackpad, console controller, or *gasp* even a trackball, are just one part of how people interact with their devices and with the Web. And that part is small and shrinking. It's likely that you're reading this on
+        a touch-based device right now.
+        </p>
+        <p>
+        Various studies done by various companies estimate that 40-60% of Web traffic is from a mobile device. Depending on the study, the estimate may or may not include tablet traffic, but factor those in as well. There are also the simultaneously
+        touch-capable and cursor-enabled devices, such as many laptops and desktops running some version of Windows 8. These devices are hover-capable, but as developers we cannot depend on the user to employ one method of interaction over
+        another, so count those in, too.
+        </p>
+        <p>
+        That's a lot of tapping. Considering the breadth of touch-based devices, I'd say it's likely that over half of the users on the Web are interacting with sites via tap. Is your site touch-friendly? (I hope so.) That's a question many other
+        articles and posts can help you answer. This post just deals with one part: <code>:hover</code>.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>Should I use :hover?</h2>
+        <p>
+        The answer, despite everything I've said so far, is yes! You should use <code>:hover</code>. But not a lot. You should definitely not <em>depend</em> on it. Let me bring back a buzzword coined in 2003 to sum up how you should use <code>:hover</code>:
+        Progressive Enhancement. Progressive Enhancement means (to me):
+        </p>
+        <ol>
+            <li>
+                Your site works, at least on a basic level, for all devices and users; that in the least, every user can access and understand your core content.
+            </li>
+            <li>
+                Devices with support for newer or different technology, features, et cetera, receive little “bonus” enhancements, that should, well, enhance the user's experience of your site.
+            </li>
+        </ol>
+        <p>
+        Bearing those points in mind, you should <em>never</em> use <code>:hover</code> as the only way to reveal a core piece of content or enable core functionality, because a tapping user might never see it.
+        </p>
+        <p>
+        Take the popular dropdown menu, which has several options that each reveal further choices when hovered over. In my experience this sometimes still works on a touchscreen because of workarounds added in by browser developers (this involves click, touch, hover, and other events all being sent with one tap), but this cannot be relied upon. If you want to use a dropdown menu, it should be tap-compatible.
+        </p>
+        <p>
+        At any rate, keeping good ol' PC's in mind, we can and should still add little bits of <code>:hover</code> to enhance the experience of a cursor user. As an example, on this site text links (<span class="u-link-pseudo">example</span>) change slightly when
+        hovered. This design tidbit is meant to be an extra little hint to users that the element they're focusing on can be interacted with. This functionality is completely unnecessary, but PC users are accustomed to it, so I added it to
+        my site to make it easier to use. There are, of course, other ways to use <code>:hover</code> to enhance the cursor experience, but my site just has the one example. Just keep in mind that only around half your
+        users might have a cursor, so I wouldn't go crazy with adding <code>:hover</code> enhancements; that could prove to be a lot of work with little gained to show for it.
+        </p>
+        <p>
+        A final note on the usage of <code>:hover</code>: keep your target userbase in mind. If you're designing an enterprise web app for a company to use internally and you know all the users will be on PC's, feel more free to use <code>:hover</code>.
+        But if you're designing a mobile app for iOS or Android there won't be any hovering going on unless your app is used by somebody in a helicopter.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>Bonus</h2>
+        <p>
+        "You've made touch devices sound less capable. Did we get anything good from touch as far as the Web goes?"</p>
+        <p>
+        Sort of. We got gestures. Mainly swiping. However, many of these are currently used by browsers themselves to do browser-related tasks such as going back a page, zooming, et cetera. And at the moment browsers don't have very similar implementations of touch events and whether or not click and other events are fired, which makes gestures much harder to code for. It can still be done, but that's getting into the territory of browser sniffing and loading libraries to help you out. Going down that path may work well for your project, but you have to consider the extra work you'll have on your end as well as the longer download and render times on the user's end. As such, the advantages of touchscreen interfaces largely remain to be seen on the Web.
+        </p>
+    </div>
+    <div class="paragraph-group">
+        <h2>Is there a future to hovering?</h2>
+        <p>
+        I keep reading that they're working on these awesome hoverboards, so one of these days we'll be zipping around on those, 'Back to the Future' style. I can't wait. Other than that, <code>:hover</code> for fingertips already exists somewhat on some devices. I don't think it's very useful, but it's around.
+        </p>
+        <p>
+        The thing about touchscreens is that people don't usually hover their finger over what they're looking at; they usually decide they want to tap something and <em>then</em> move the finger into play. This is unlike a mouse, where a user might be moving the cursor wherever they look, hovering over things as they go. I think that maybe firing hover events when a user pauses to look at an element for a while may prove useful, this being accomplished by eye tracking via front camera(s), but I'm not sure I like the privacy implications, such as sites remembering what I looked at, literally.
+        </p>
+    </div>
+</section>
+</main>

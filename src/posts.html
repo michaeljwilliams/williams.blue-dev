@@ -1,24 +1,17 @@
 {{& "./src/pep_includes/_head.html", {
     "currentPage": {
-        "title": "Michael Williams",
-        "url": "/index.html"
+        "title": "Michael Williams - All Posts",
+        "url": "/posts.html"
     }
 } &}}
     <main>
-        <section class="about-me-section">
-            <h2>About me</h2>
-            <p>
-                Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating elegant, functional designs and user experiences and easy-to-use, fast websites. I also enjoy sharing <a href="posts.html">my ideas</a> and <a href="work.html">my work</a>. <a href="mailto:{{$ __Pep.michael.publicEmail $}}">Send me an email!</a>
-            </p>
-        </section>
-
         <section>
-            <h2>Recent posts</h2>
+        <h2>All posts</h2>
             <ol class="post-list">
                 {{(
                     const posts = require(`${process.cwd()}/src/posts/posts.json`);
 
-                    for(let i = 1, l = posts.length; i <= 3; i++) {
+                    for(let i = 1, l = posts.length; i <= l; i++) {
                         let p = posts[l - i];
                         {{{
                             <li>
@@ -29,8 +22,8 @@
                             </li>
                         }}}
                     }
-                )}} 
+                )}}
             </ol>
-        </section> 
+        </section>
     </main>
 {{& "./src/pep_includes/_foot.html" &}}
