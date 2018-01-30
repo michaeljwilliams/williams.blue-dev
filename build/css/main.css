@@ -1,5 +1,5 @@
 /* INIT ***********************************************************************/
-pre,textarea{overflow:auto}html,table{border-collapse:collapse}audio:not([controls]),template{display:none}details,main,summary{display:block}input[type=number]{width:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}progress{display:inline-block}small{font-size:75%}[unselectable]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}*,::after,::before{-webkit-box-sizing:inherit;box-sizing:inherit;text-decoration:inherit;vertical-align:inherit;border-style:solid;border-width:0}*{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;line-height:inherit;border-collapse:inherit}*,:after,:before,body,html{margin:0;padding:0;outline:0;border:none}:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;-webkit-box-sizing:border-box;box-sizing:border-box;cursor:default;font-family:sans-serif;line-height:1.5em;text-rendering:optimizeLegibility;vertical-align:top}a{text-decoration:none;}button,input,select,textarea{background:0 0}code,kbd,pre,samp{font-family:monospace,monospace}input{min-height:1.5em}nav ol,nav ul, ol, ul{list-style:none}select{-moz-appearance:none;-webkit-appearance:none}select::-ms-expand{display:none}select::-ms-value{color:currentColor}textarea{resize:vertical}::-moz-selection{color:#fff;background-color:#444;text-shadow:none}::selection{color:#fff;background-color:#444;text-shadow:none}@media screen{[hidden~=screen]{display:inherit}[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;border:none}button{overflow:visible}table{border-spacing:0}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}
+pre,textarea{overflow:auto}html,table{border-collapse:collapse}audio:not([controls]),template{display:none}details,main,summary{display:block}input[type=number]{width:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}progress{display:inline-block}small{font-size:75%}[unselectable]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}*,::after,::before{-webkit-box-sizing:inherit;box-sizing:inherit;text-decoration:inherit;vertical-align:inherit;border-style:solid;border-width:0}*{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;line-height:inherit;border-collapse:inherit}*,:after,:before,body,html{margin:0;padding:0;outline:0;border:none}:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;-webkit-box-sizing:border-box;box-sizing:border-box;cursor:default;font-family:sans-serif;line-height:1.5em;text-rendering:optimizeLegibility;vertical-align:top}a{color:inherit;text-decoration:inherit;}button,input,select,textarea{background:0 0}code,kbd,pre,samp{font-family:monospace,monospace}input{min-height:1.5em}nav ol,nav ul, ol, ul{list-style:none}select{-moz-appearance:none;-webkit-appearance:none}select::-ms-expand{display:none}select::-ms-value{color:currentColor}textarea{resize:vertical}::-moz-selection{color:#fff;background-color:#444;text-shadow:none}::selection{color:#fff;background-color:#444;text-shadow:none}@media screen{[hidden~=screen]{display:inherit}[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;border:none}button{overflow:visible}table{border-spacing:0}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}
 sub, sup {
     vertical-align: baseline;
     font-size: 80%;
@@ -43,7 +43,7 @@ small {
 }
 
 p,
-a:not(.u-link-reset),
+a,
 li,
 i,
 time {
@@ -101,19 +101,19 @@ h3 {
 }
 
 /* DEFAULT LINKS **************************************************************/
-a:link:not(.u-link-reset) {
+.link:link {
     color: #00aaff;
     border-bottom: 2.4px dotted;
     border-bottom: .15rem dotted;
 }
-a:hover:not(.u-link-reset),
-a:focus:not(.u-link-reset),
-a:active:not(.u-link-reset) {
+.link:hover,
+.link:focus,
+.link:active {
     color: #00aaff;
     border-bottom: 2.4px solid;
     border-bottom: .15rem solid;
 }
-a:visited:not(.u-link-reset) {
+.link:visited {
     color: #8a8a8a;
     border-bottom: 2.4px dotted;
     border-bottom: .15rem dotted;
@@ -311,25 +311,26 @@ ol.footnotes li {
     margin-bottom: 32px;
     margin-bottom: 2rem;
 }
-.post-list-post-title {
+.postlist-post-title {
     display: inline-block;
-    margin-bottom: 8px;
-    margin-bottom: .5rem;
+    padding: 0;
     border-bottom: none;
 }
-.post-list li {
+.postlist li {
     margin-bottom: 64px;
     margin-bottom: 4rem;
 }
-.post-list p {
-    margin-bottom: 16px;
-    margin-bottom: 1rem;
-    display: block;
+.postlist p {
+    padding-top: 8px;
+    padding-top: .5rem;
 }
-.post-list time {
+.postlist-date {
     display: block;
-    margin-bottom: 16px;
-    margin-bottom: 1rem;
+    padding-top: 8px;
+    padding-top: .5rem;
+}
+.postlist-continue {
+    display: inline-block;
 }
 
 .about-me-section p {
@@ -340,11 +341,11 @@ ol.footnotes li {
     display: block;
 }
 
-.portfolio-section {
+.gallery-section {
     width: 100%;
     text-align: center;
 }
-.portfolio-section > div {
+.gallery-section > div {
     min-width: 192px;
     min-width: 12rem;
     min-height: 192px;
@@ -356,12 +357,12 @@ ol.footnotes li {
     vertical-align: middle;
     position: relative;
 }
-.portfolio-section img {
+.gallery-section img {
     max-width: 100%;
     max-height: 100%;
     cursor: pointer;
 }
-.portfolio-section > div > div {
+.gallery-section > div > div {
     padding: 16px;
     padding: 1rem;
     background-color: rgba(0, 0, 0, .75);
@@ -385,7 +386,7 @@ ol.footnotes li {
             justify-content: center;
     cursor: pointer;
 }
-.portfolio-section > div > div > p {
+.gallery-section > div > div > p {
     width: 100%;
     color: white;
 }
@@ -417,7 +418,7 @@ span[data-link-onpage*=footnote] {
     line-height: 32px;
     line-height: 2rem;
 }
-.post-list-post-title {
+.postlist-post-title {
     font-size: 38.4px;
     font-size: 2.4rem;
     line-height: 57.6px;
@@ -425,31 +426,31 @@ span[data-link-onpage*=footnote] {
 }
 
 /* LINKS **********************************************************************/
-.link-nav,
-.link-nav:link,
-.link-nav:hover,
-.link-nav:focus,
-.link-nav:active,
-.link-nav:visited {
-    color: white !important; /* Gets overriden otherwise */
+.link-nav {
+    color: white;
     line-height: 32px;
     line-height: 2rem;
+    border-bottom: 2.4px dotted;
+    border-bottom: .15rem dotted;
 }
-.link-nav:focus:not(.u-_is-current-nav-link) {
-    border-bottom: 2.4px dotted !important;
-    border-bottom: .15rem dotted !important;
+.link-nav:hover {
+    border-bottom: 2.4px solid;
+    border-bottom: .15rem solid;
 }
 
-.post-list-post-title {
+.postlist-post-title {
     color: #00aaff;
 }
-.post-list-post-title:visited {
+.postlist-post-title:visited {
     color: #8a8a8a;
 }
 
 /* COLOR **********************************************************************/
 /* really blue: #006fff
+ * brighter: #108fff
  * aqua: #00aaff
+ * tropics: #03D7F9
+ * greenish: #1DE1AC
  */
 
 header, footer {
@@ -457,7 +458,7 @@ header, footer {
     color: white;
 }
 
-.post-list time,
+.postlist time,
 .post-start time {
     color: #888888;
 }
@@ -566,9 +567,6 @@ span[data-link-onpage*=footnote] {
 .u-nowrap-phrase {
     white-space: nowrap;
 }
-
-/* .u-link-reset: Resets the link to its inherited appearance, so it can be styled individually. */
-.u-link-reset{}
 
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
 .u-link-pseudo {

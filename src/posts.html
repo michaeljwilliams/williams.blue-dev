@@ -7,7 +7,7 @@
     <main>
         <section>
         <h2>All posts</h2>
-            <ol class="post-list">
+            <ol class="postlist">
                 {{(
                     const posts = require(`${process.cwd()}/src/posts/posts.json`);
 
@@ -15,10 +15,12 @@
                         let p = posts[l - i];
                         {{{
                             <li>
-                                <a class="u-link-reset post-list-post-title" href="${p.link}">${p.title}</a>
-                                    <time>${p.date}</time>
+                                <a href="${p.link}">
+                                    <h3 class="postlist-post-title">${p.title}</h3>
+                                    <time class="postlist-date">${p.date}</time>
                                     <p>${p.blurb}</p>
-                                <a href="${p.link}">Continue reading</a>
+                                    <p class="u-link-pseudo postlist-continue">Continue reading</p>
+                                </a>
                             </li>
                         }}}
                     }
