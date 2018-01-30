@@ -23,6 +23,7 @@ const paths = {
     "src": {
         "i": "src", // Stands for "initial"
         "html": ["src/**/*.html", "!src/pep_includes/**/*.*"],
+        "htmlwatch": ["src/**/*.html"],
         "css": ["src/css/**/*.css"],
         "js": ["src/js/**/*.js"],
         "img": ["src/img/**/*.*"]
@@ -100,8 +101,8 @@ function startBrowserSync() {
 
 // Watch files and build on change
 function watchAndRebuild() {
-    const watcher = 
-    [   gulp.watch(paths.src.html, buildHTML)
+    const watcher =
+    [   gulp.watch(paths.src.htmlwatch, buildHTML)
     ,   gulp.watch(paths.src.css, buildCSS)
     ,   gulp.watch(paths.src.js, buildJS)
     ,   gulp.watch(paths.src.img, copyImg)
@@ -198,7 +199,7 @@ function lintJS(done) {
 // Clean dist directory
 function cleanDist(done) {
     let d = paths.dist.i
-    // You can use multiple globbing patterns as you would with `gulp.src` 
+    // You can use multiple globbing patterns as you would with `gulp.src`
     // If you are using del 2.0 or above, return its promise
     return del([
         `${d}/*`,
