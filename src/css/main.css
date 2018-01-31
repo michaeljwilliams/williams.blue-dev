@@ -91,13 +91,13 @@ h3 {
 
 /* DEFAULT LINKS **************************************************************/
 .link:link {
-    color: #00aaff;
+    color: #0099ff;
     border-bottom: .15rem dotted;
 }
 .link:hover,
 .link:focus,
 .link:active {
-    color: #00aaff;
+    color: #0099ff;
     border-bottom: .15rem solid;
 }
 .link:visited {
@@ -154,14 +154,15 @@ code {
     display: none;
 }
 .navburger-button {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: .5rem;
+    right: .5rem;
     border-radius: 50%;
     transition: all .3s linear;
-    background-color: #0af;
+    background-color: #09f;
+    border: .3rem solid white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,11 +208,11 @@ code {
     justify-content: space-around;
     opacity: 0;
     transition: all .1s linear;
-    transition-delay: .1s;
 }
-.navburger-checkbox:checked ~ .navburger-nav > .navburger-nav-linklist{
+.navburger-checkbox:checked ~ .navburger-nav > .navburger-nav-linklist {
     opacity: 1;
     pointer-events: auto;
+    transition-delay: .17s;
 }
 
 .selfie {
@@ -229,7 +230,7 @@ code {
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: content-box;
-    border-color: #00aaff;
+    border-color: #0099ff;
 }
 
 .iconsprite {
@@ -272,32 +273,49 @@ main > div > article:not(.full-width) {
     margin: 0 auto 4rem auto;
 }
 
-header, footer {
+.siteheader, .sitefooter {
     min-height: 4rem;
     width: 100%;
 }
 
-header {
-    margin-bottom: 2rem;
-    padding: .5rem .5rem 1rem .5rem;
+.siteheader {
+    padding: .5rem 0 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
 .masthead {
-    margin: 0 2rem;
     text-align: center;
+    font-size: 2.4rem;
+    line-height: 3rem;
 }
-.headernav {
-    display: flex;
+.siteheadernav {
     width: 100%;
     max-width: 44rem;
+    display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-footer {
+.homehero {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.homehero-p {
+    max-width: 44rem;
+    width: 90%;
+    font-size: 2rem;
+    line-height: 3rem;
+    padding-bottom: 6rem;
+}
+
+.sitefooter {
     text-align: center;
     padding: 1rem;
 }
@@ -348,6 +366,8 @@ ol.footnotes li {
     display: inline-block;
     padding: 0;
     border-bottom: none;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
 }
 .postlist li {
     margin-bottom: 4rem;
@@ -361,10 +381,6 @@ ol.footnotes li {
 }
 .postlist-continue {
     display: inline-block;
-}
-
-.about-me-section p {
-    margin-bottom: 0;
 }
 
 .social-links-div {
@@ -424,14 +440,7 @@ span[data-link-onpage*=footnote] {
 }
 
 /* FONTS **********************************************************************/
-.masthead {
-    font-size: 2.4rem;
-    line-height: 3rem;
-}
-.postlist-post-title {
-    font-size: 2.4rem;
-    line-height: 3.6rem;
-}
+
 
 /* LINKS **********************************************************************/
 .link-navburger {
@@ -444,31 +453,39 @@ span[data-link-onpage*=footnote] {
     border-bottom: .18rem solid;
 }
 
-.link-headernav {
+.link-siteheadernav {
     color: white;
     border-bottom: .15rem dotted;
 }
-.link-headernav:hover {
+.link-siteheadernav:hover {
     border-bottom: .15rem solid;
 }
 
-.postlist-post-title {
-    color: #00aaff;
+.link-homehero {
+    font-size: 2rem;
+    line-height: 3rem;
+    color: white;
 }
-.postlist-post-title:visited {
-    color: #8a8a8a;
+.link-homehero:link {
+    color: #0099ff;
+    border-bottom: .18rem dotted;
+}
+.link-homehero:hover,
+.link-homehero:focus,
+.link-homehero:active {
+    border-bottom: .18rem solid;
 }
 
 /* COLOR **********************************************************************/
 /* really blue: #006fff
  * brighter: #108fff
- * aqua: #00aaff
+ * aqua: #09f
  * tropics: #03D7F9
  * greenish: #1DE1AC
  */
 
-header, footer {
-    background-color: #00aaff;
+.siteheader, .sitefooter {
+    background-color: #09f;
     color: white;
 }
 
@@ -479,7 +496,19 @@ header, footer {
 
 /* Footnotes */
 span[data-link-onpage*=footnote] {
-    background-color: #00aaff;
+    background-color: #09f;
+}
+
+.homehero {
+    background-color: #09f;
+    color: white;
+}
+
+.postlist-post-title {
+    color: #09f;
+}
+.link-post:visited .postlist-post-title {
+    color: #8a8a8a;
 }
 
 /* NARROW SCREENS *************************************************************/
@@ -508,7 +537,17 @@ span[data-link-onpage*=footnote] {
     code {
         font-size: 1rem;
     }
-    .headernav {
+
+    .siteheader {
+        display: inherit;
+        text-align: left;
+        padding: .5rem 0 1rem 5%;
+    }
+    .masthead {
+        margin-right: 4rem;
+    }
+
+    .siteheadernav {
         display: none;
     }
 
@@ -520,6 +559,11 @@ span[data-link-onpage*=footnote] {
     .navburger-nav-linklist {
         transition: all .15s linear;
         transition-delay: 0;
+    }
+
+    .homehero-p, .link-homehero {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
     }
 
 }
@@ -575,7 +619,7 @@ span[data-link-onpage*=footnote] {
 
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
 .u-link-pseudo {
-    color: #00aaff !important;
+    color: #0099ff !important;
     border-bottom: .15rem dotted !important;
     cursor: pointer !important;
 }
@@ -586,7 +630,7 @@ span[data-link-onpage*=footnote] {
     cursor: pointer !important;
 }
 .u-link-pseudo-no-underline {
-    color: #00aaff !important;
+    color: #0099ff !important;
     cursor: pointer !important;
 }
 
@@ -615,7 +659,7 @@ span[data-link-onpage*=footnote] {
     border: .2rem solid white;
     color: white;
     padding: .4rem;
-    background-color: #00aaff;
+    background-color: #0099ff;
 }
 
 /* Notice in content area */
@@ -635,7 +679,7 @@ span[data-link-onpage*=footnote] {
 .u-notification-loading {
     border-radius: .5rem;
     border: .2rem solid white;
-    background-color: #00aaff;
+    background-color: #0099ff;
     text-align: center;
     color: white;
     padding: 1rem;

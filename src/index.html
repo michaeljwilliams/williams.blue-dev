@@ -4,14 +4,12 @@
         "url": "/index.html"
     }
 } &}}
+    <section class="homehero">
+        <p class="homehero-p">
+            I'm a designer, developer, and user experience activist. <span class="u-nowrap-phrase">I love</span> making the Web a better place by creating fast, easy-to-use apps and sites. <span class="u-nowrap-phrase">I also</span> enjoy sharing <a href="posts.html" class="link-homehero">my ideas</a> and <a href="/code.html" class="link-homehero">my</a> <a href="/design.html" class="link-homehero">work</a>.
+        </p>
+    </section>
     <main>
-        <section class="about-me-section">
-            <h2>About me</h2>
-            <p>
-                I'm a designer, developer, and user experience activist. I love making the Web a better place by creating fast, easy-to-use apps and sites, with designs that are both elegant and functional. I also enjoy sharing <a href="posts.html" class="link">my ideas</a> and <a href="/code.html" class="link">my</a> <a href="/design.html" class="link">work</a>.
-            </p>
-        </section>
-
         <section>
             <h2>Recent posts</h2>
             <ol class="postlist">
@@ -22,7 +20,7 @@
                         let p = posts[l - i];
                         {{{
                             <li>
-                                <a href="${p.link}">
+                                <a href="${p.link}" class="link-post">
                                     <h3 class="postlist-post-title">${p.title}</h3>
                                     <time class="postlist-date">${p.date}</time>
                                     <p>${p.blurb}</p>
