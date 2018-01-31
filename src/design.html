@@ -108,25 +108,4 @@
 
         </section>
     </main>
-
-    <script>
-        var portfolioHandler = {
-
-            lastImageThatWasClicked: false
-
-            ,imageWasClicked: function(target) {
-                if(this.lastImageThatWasClicked !== false) this.lastImageThatWasClicked.parentElement.querySelector("div").classList.add("u-_is-invisible");
-                this.lastImageThatWasClicked = target;
-                target.parentElement.querySelector("div").classList.remove("u-_is-invisible");
-            }
-
-            ,clickedAgain: function(target) {
-                target.classList.add("u-_is-invisible");
-            }
-            ,clickedAgainP: function(target) {
-                target.parentElement.classList.add("u-_is-invisible");
-            }
-
-        };
-    </script>
 {{& "./src/pep_includes/_foot.html" &}}
