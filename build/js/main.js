@@ -30,20 +30,18 @@ var clickHandler = {
         if (e.target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(e.target);
         if (e.target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
 
-        // Portfolio
-        if (currentPage.url === "/work.html") {
-            // Portfolio image is clicked
-            if (e.target.className.indexOf("portfolio-image") !== -1) {
-                portfolioHandler.imageWasClicked(e.target);
-            }
-            // Caption text is clicked
-            if (e.target.className.indexOf("portfolio-caption") !== -1) {
-                portfolioHandler.clickedAgain(e.target);
-            }
-            // Caption box *containing* the text is clicked (the Parent element)
-            if (e.target.parentElement.className.indexOf("portfolio-caption") !== -1) {
-                portfolioHandler.clickedAgainP(e.target);
-            }
+        // Gallery
+        // Gallery image is clicked
+        if (e.target.className.indexOf("gallery-image") !== -1) {
+            galleryHandler.imageWasClicked(e.target);
+        }
+        // Caption text is clicked
+        if (e.target.className.indexOf("gallery-caption") !== -1) {
+            galleryHandler.clickedAgain(e.target);
+        }
+        // Caption box *containing* the text is clicked (the Parent element)
+        if (e.target.parentElement.className.indexOf("gallery-caption") !== -1) {
+            galleryHandler.clickedAgainP(e.target);
         }
     } // end exe
 };
@@ -133,11 +131,33 @@ var onpageLinkHandler = {
 };
 
 var currentPageNavLinkUnderline = function currentPageNavLinkUnderline() {
-    var a = document.querySelectorAll(".link-nav"); // Get the nav links.
-    var b = currentPage.url; // So we can type less
-    if (b === "/posts.html" || b === "/work.html" || b === "/me.html") {
-        document.querySelector('.link-nav[href*="' + b + '"]').classList.add("u-_is-current-nav-link");
+    var b = currentPage.url; // So I can type less
+    if (b === "/") b = "/index.html"; // Index.html doesn't show in url
+    if (b === "/index.html" || b === "/posts.html" || b === "/code.html" || b === "/design.html" || b === "/me.html") {
+        var els = document.querySelectorAll('.link-nav[href*="' + b + '"]');
+        for (var i = 0, l = els.length; i < l; i++) {
+            els[i].classList.add("u-_is-current-nav-link");
+        }
     }
+};
+
+var galleryHandler = {
+
+    lastImageThatWasClicked: false,
+
+    imageWasClicked: function imageWasClicked(target) {
+        if (this.lastImageThatWasClicked !== false) this.lastImageThatWasClicked.parentElement.querySelector("div").classList.add("u-_is-invisible");
+        this.lastImageThatWasClicked = target;
+        target.parentElement.querySelector("div").classList.remove("u-_is-invisible");
+    },
+
+    clickedAgain: function clickedAgain(target) {
+        target.classList.add("u-_is-invisible");
+    },
+    clickedAgainP: function clickedAgainP(target) {
+        target.parentElement.classList.add("u-_is-invisible");
+    }
+
 };
 
 // Code that runs //////////////////////////////////////////////////////////////////////////////////
