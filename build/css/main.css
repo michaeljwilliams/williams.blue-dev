@@ -102,14 +102,14 @@ h3 {
 
 /* DEFAULT LINKS **************************************************************/
 .link:link {
-    color: #0099ff;
+    color: #08f;
     border-bottom: 2.4px dotted;
     border-bottom: .15rem dotted;
 }
 .link:hover,
 .link:focus,
 .link:active {
-    color: #0099ff;
+    color: #08f;
     border-bottom: 2.4px solid;
     border-bottom: .15rem solid;
 }
@@ -184,7 +184,7 @@ code {
     border-radius: 50%;
     -webkit-transition: all .3s linear;
     transition: all .3s linear;
-    background-color: #09f;
+    background-color: #08f;
     border: 4.8px solid white;
     border: .3rem solid white;
     display: -webkit-box;
@@ -274,7 +274,7 @@ code {
     background-position: center;
     -webkit-box-sizing: content-box;
             box-sizing: content-box;
-    border-color: #0099ff;
+    border-color: #08f;
 }
 
 .iconsprite {
@@ -589,7 +589,7 @@ span[data-link-onpage*=footnote] {
     color: white;
 }
 .link-homehero:link {
-    color: #0099ff;
+    color: white;
     border-bottom: 2.88px dotted;
     border-bottom: .18rem dotted;
 }
@@ -598,18 +598,19 @@ span[data-link-onpage*=footnote] {
 .link-homehero:active {
     border-bottom: 2.88px solid;
     border-bottom: .18rem solid;
+    color: white;
 }
 
 /* COLOR **********************************************************************/
 /* really blue: #006fff
  * brighter: #108fff
- * aqua: #09f
+ * blueprint blue: #08f
  * tropics: #03D7F9
  * greenish: #1DE1AC
  */
 
 .siteheader, .sitefooter {
-    background-color: #09f;
+    background-color: #08f;
     color: white;
 }
 
@@ -620,16 +621,16 @@ span[data-link-onpage*=footnote] {
 
 /* Footnotes */
 span[data-link-onpage*=footnote] {
-    background-color: #09f;
+    background-color: #08f;
 }
 
 .homehero {
-    background-color: #09f;
+    background-color: #08f;
     color: white;
 }
 
 .postlist-post-title {
-    color: #09f;
+    color: #08f;
 }
 .link-post:visited .postlist-post-title {
     color: #8a8a8a;
@@ -757,7 +758,7 @@ span[data-link-onpage*=footnote] {
 
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
 .u-link-pseudo {
-    color: #0099ff !important;
+    color: #08f !important;
     border-bottom: 2.4px dotted !important;
     border-bottom: .15rem dotted !important;
     cursor: pointer !important;
@@ -770,7 +771,7 @@ span[data-link-onpage*=footnote] {
     cursor: pointer !important;
 }
 .u-link-pseudo-no-underline {
-    color: #0099ff !important;
+    color: #08f !important;
     cursor: pointer !important;
 }
 
@@ -803,7 +804,7 @@ span[data-link-onpage*=footnote] {
     color: white;
     padding: 6.4px;
     padding: .4rem;
-    background-color: #0099ff;
+    background-color: #08f;
 }
 
 /* Notice in content area */
@@ -827,7 +828,7 @@ span[data-link-onpage*=footnote] {
     border-radius: .5rem;
     border: 3.2px solid white;
     border: .2rem solid white;
-    background-color: #0099ff;
+    background-color: #08f;
     text-align: center;
     color: white;
     padding: 16px;
