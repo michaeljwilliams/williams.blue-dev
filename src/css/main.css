@@ -725,5 +725,5 @@ span[data-link-onpage*=footnote] {
     }
 
 .u-_is-current-nav-link {
-    border-bottom-style: solid !important; /* Gets overriden otherwise */
+    border-bottom-style: solid; /* Gets overriden otherwise */
 }
