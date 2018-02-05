@@ -175,6 +175,7 @@ code {
     height: 400vw;
     top: calc(2rem - 200vw);
     right: calc(2rem - 200vw);
+    border-width: 8rem;
 }
 .navburger-button::before {
     content: "";
