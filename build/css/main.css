@@ -281,16 +281,21 @@ code {
 .social-links-container {
     max-width: 704px;
     max-width: 44rem;
-    margin: auto;
+    margin: 0 auto 16px auto;
+    margin: 0 auto 1rem auto;
     display: block;
-}
-.social-links-a,
-.social-links-b {
-    display: inline-block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
 }
 .footericon {
-    padding: 8px;
-    padding: .5rem;
+    padding: 8px 0 8px 0;
+    padding: .5rem 0 .5rem 0;
     display: inline-block;
     text-align: left;
     line-height: 48px;
@@ -309,17 +314,17 @@ code {
     background-repeat: no-repeat;
     background-position: center;
 }
-.icon-github::before {
-    background-image: url("/img/icons/github.svg");
-}
-.icon-spotify::before {
-    background-image: url("/img/icons/spotify.svg");
-}
 .icon-email::before {
     background-image: url("/img/icons/email.svg");
 }
+.icon-github::before {
+    background-image: url("/img/icons/github.svg");
+}
 .icon-dribbble::before {
     background-image: url("/img/icons/dribbble.svg");
+}
+.icon-spotify::before {
+    background-image: url("/img/icons/spotify.svg");
 }
 
 main {
@@ -707,18 +712,10 @@ span[data-link-onpage*=footnote] {
     }
 
     .social-links-container {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-        -webkit-box-pack: space-evenly;
-            -ms-flex-pack: space-evenly;
-                justify-content: space-evenly;
+        max-width: 16rem;
     }
     .footericon {
-        width: 10rem;
+        width: 8rem;
     }
 
 }

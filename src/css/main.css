@@ -236,15 +236,14 @@ code {
 
 .social-links-container {
     max-width: 44rem;
-    margin: auto;
+    margin: 0 auto 1rem auto;
     display: block;
-}
-.social-links-a,
-.social-links-b {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .footericon {
-    padding: .5rem;
+    padding: .5rem 0 .5rem 0;
     display: inline-block;
     text-align: left;
     line-height: 3rem;
@@ -259,17 +258,17 @@ code {
     background-repeat: no-repeat;
     background-position: center;
 }
-.icon-github::before {
-    background-image: url("/img/icons/github.svg");
-}
-.icon-spotify::before {
-    background-image: url("/img/icons/spotify.svg");
-}
 .icon-email::before {
     background-image: url("/img/icons/email.svg");
 }
+.icon-github::before {
+    background-image: url("/img/icons/github.svg");
+}
 .icon-dribbble::before {
     background-image: url("/img/icons/dribbble.svg");
+}
+.icon-spotify::before {
+    background-image: url("/img/icons/spotify.svg");
 }
 
 main {
@@ -577,12 +576,10 @@ span[data-link-onpage*=footnote] {
     }
 
     .social-links-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+        max-width: 16rem;
     }
     .footericon {
-        width: 10rem;
+        width: 8rem;
     }
 
 }
