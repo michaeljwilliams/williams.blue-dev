@@ -180,13 +180,13 @@ code {
     content: "";
     height: 2rem;
     width: 2rem;
-    background-image: url("/img/hamburger button.svg");
+    background-image: url("/img/icons/hamburger button.svg");
     background-size: 1.2rem 1rem;
     background-repeat: no-repeat;
     background-position: center;
 }
 .navburger-checkbox:checked ~ .navburger-button::before {
-    background-image: url("/img/hamburger button X.svg");
+    background-image: url("/img/icons/hamburger button X.svg");
     background-size: 1rem 1rem;
 }
 .navburger-nav {
@@ -233,34 +233,47 @@ code {
     border-color: #08f;
 }
 
-.iconsprite {
-    margin: .5rem 1rem .5rem 0;
+
+.social-links-container {
+    max-width: 44rem;
+    margin: auto;
+    display: block;
+}
+.social-links-a,
+.social-links-b {
     display: inline-block;
 }
-.iconsprite::before {
+.footericon {
+    padding: .5rem;
+    display: inline-block;
+    text-align: left;
+    line-height: 3rem;
+}
+.footericon::before {
     content: "";
     display: inline-block;
-    width: 36px;
-    height: 36px;
+    width: 3rem;
+    height: 3rem;
     margin-right: .5rem;
-    margin-left: 1rem;
-    margin-top: -.4rem;
-    background: url(/img/iconSprite.svg);
-    background-size: auto 36px;
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
-.iconsprite-github::before {
-    background-position: 0 0
+.icon-github::before {
+    background-image: url("/img/icons/github.svg");
 }
-.iconsprite-spotify::before {
-    background-position: -36px 0;
+.icon-spotify::before {
+    background-image: url("/img/icons/spotify.svg");
 }
-.iconsprite-email::before {
-    background-position: -72px 0;
+.icon-email::before {
+    background-image: url("/img/icons/email.svg");
+}
+.icon-dribbble::before {
+    background-image: url("/img/icons/dribbble.svg");
 }
 
 main {
-    min-height: calc(100% - 10rem);
+    min-height: calc(100vh - 10rem);
     width: 100%;
     padding: 1rem;
 }
@@ -381,10 +394,6 @@ ol.footnotes li {
 }
 .postlist-continue {
     display: inline-block;
-}
-
-.social-links-div {
-    display: block;
 }
 
 .gallery-section {
@@ -513,7 +522,7 @@ span[data-link-onpage*=footnote] {
 }
 
 /* NARROW SCREENS *************************************************************/
-@media (max-width: 36rem) {
+@media (max-width: 40rem) {
 
     h1 {
         font-size: 2.2rem;
@@ -565,6 +574,15 @@ span[data-link-onpage*=footnote] {
     .homehero-p, .link-homehero {
         font-size: 1.6rem;
         line-height: 2.4rem;
+    }
+
+    .social-links-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .footericon {
+        width: 10rem;
     }
 
 }
@@ -633,25 +651,6 @@ span[data-link-onpage*=footnote] {
 .u-link-pseudo-no-underline {
     color: #08f !important;
     cursor: pointer !important;
-}
-
-/* Use for external links. Adds an icon to tell the user the URL is on a different site. */
-.u-link-external {
-    position: relative;
-    margin-right: 1rem;
-}
-.u-link-external::after {
-    content: "";
-    display: inline-block;
-    background: url(/img/iconSprite.svg);
-    background-repeat: no-repeat;
-    width: 10px;
-    height: 10px;
-    background-size: auto 10px;
-    background-position: -30px 0;
-    position: absolute;
-    top: 20%;
-    right: -.8rem;
 }
 
 /* Button - simple */
