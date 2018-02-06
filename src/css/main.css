@@ -160,9 +160,13 @@ code {
     top: .5rem;
     right: .5rem;
     border-radius: 50%;
-    transition: all .3s linear;
-    background-color: #08f;
-    border: .3rem solid white;
+    transition:
+        width .3s linear,
+        height .3s linear,
+        top .3s linear,
+        right .3s linear,
+        background-color 0s linear .3s;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,20 +175,29 @@ code {
     pointer-events: auto;
 }
 .navburger-checkbox:checked ~ .navburger-button {
+    background-color: #08f;
     width: 400vw;
     height: 400vw;
     top: calc(2rem - 200vw);
     right: calc(2rem - 200vw);
-    border-width: 8rem;
+    transition:
+        width .3s linear,
+        height .3s linear,
+        top .3s linear,
+        right .3s linear,
+        background-color 0s linear 0s;
 }
 .navburger-button::before {
     content: "";
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
+    border: .2rem solid white;
+    border-radius: 50%;
     background-image: url("/img/icons/hamburger button.svg");
     background-size: 1.2rem 1rem;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: #08f;
 }
 .navburger-checkbox:checked ~ .navburger-button::before {
     background-image: url("/img/icons/hamburger button X.svg");
@@ -199,7 +212,7 @@ code {
 }
 .navburger-nav-linklist {
     position: absolute;
-    top: 3rem;
+    top: 4rem;
     height: 80%;
     width: 100vw;
     z-index: 99;

@@ -182,11 +182,19 @@ code {
     right: 8px;
     right: .5rem;
     border-radius: 50%;
-    -webkit-transition: all .3s linear;
-    transition: all .3s linear;
-    background-color: #08f;
-    border: 4.8px solid white;
-    border: .3rem solid white;
+    -webkit-transition:
+        width .3s linear,
+        height .3s linear,
+        top .3s linear,
+        right .3s linear,
+        background-color 0s linear .3s;
+    transition:
+        width .3s linear,
+        height .3s linear,
+        top .3s linear,
+        right .3s linear,
+        background-color 0s linear .3s;
+    background-color: white;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -201,23 +209,38 @@ code {
     pointer-events: auto;
 }
 .navburger-checkbox:checked ~ .navburger-button {
+    background-color: #08f;
     width: 400vw;
     height: 400vw;
     top: calc(2rem - 200vw);
     right: calc(2rem - 200vw);
-    border-width: 128px;
-    border-width: 8rem;
+    -webkit-transition:
+        width .3s linear,
+        height .3s linear,
+        top .3s linear,
+        right .3s linear,
+        background-color 0s linear 0s;
+    transition:
+        width .3s linear,
+        height .3s linear,
+        top .3s linear,
+        right .3s linear,
+        background-color 0s linear 0s;
 }
 .navburger-button::before {
     content: "";
-    height: 32px;
-    height: 2rem;
-    width: 32px;
-    width: 2rem;
+    height: 48px;
+    height: 3rem;
+    width: 48px;
+    width: 3rem;
+    border: 3.2px solid white;
+    border: .2rem solid white;
+    border-radius: 50%;
     background-image: url("/img/icons/hamburger button.svg");
     background-size: 1.2rem 1rem;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: #08f;
 }
 .navburger-checkbox:checked ~ .navburger-button::before {
     background-image: url("/img/icons/hamburger button X.svg");
@@ -232,8 +255,8 @@ code {
 }
 .navburger-nav-linklist {
     position: absolute;
-    top: 48px;
-    top: 3rem;
+    top: 64px;
+    top: 4rem;
     height: 80%;
     width: 100vw;
     z-index: 99;
