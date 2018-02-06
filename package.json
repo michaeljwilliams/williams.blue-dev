@@ -38,6 +38,7 @@
     "gulp-sourcemaps": "^2.6.3",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.5",
-    "postcss-cssnext": "^3.0.2"
+    "postcss-cssnext": "^3.0.2",
+    "postcss-simple-vars": "^4.1.0"
   }
 }

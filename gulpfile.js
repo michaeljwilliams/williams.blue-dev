@@ -7,13 +7,16 @@ const   gulp = require("gulp"),
         sourcemaps = require("gulp-sourcemaps"),
         rename = require("gulp-rename"),
         postcss = require("gulp-postcss"),
-        cssnext = require("postcss-cssnext"),
         imagemin = require("gulp-imagemin"),
         del = require("del"),
         csslint = require("gulp-csslint"),
         htmllint = require("gulp-htmllint"),
         htmlmin = require("gulp-htmlmin"),
         cleanCSS = require("gulp-clean-css"),
+        postcssPlugins = [
+            require("postcss-simple-vars"),
+            require("postcss-cssnext")
+            ];
 
         pep = require("../gulp-peppermint/index.js"),
 
@@ -134,7 +137,7 @@ function buildCSS(done) {
     del(paths.buildsrc.css);
     return gulp.src(paths.src.css)
         .pipe(sourcemaps.init())
-        .pipe(postcss([ cssnext() ])) // precss, postcss-utilities, postcss-sprites, postcss-assets
+        .pipe(postcss(postcssPlugins)) // precss, postcss-utilities, postcss-sprites, postcss-assets
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.build.css));
     done();
@@ -253,7 +256,7 @@ function distHTML(done) {
 // Dist CSS
 function distCSS(done) {
     return gulp.src(paths.src.css)
-        .pipe(postcss([ cssnext() ])) // precss, postcss-utilities, postcss-sprites, postcss-assets
+        .pipe(postcss(postcssPlugins))
         .pipe(cleanCSS())
         .pipe(gulp.dest(paths.dist.css));
     done();
