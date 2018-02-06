@@ -183,17 +183,17 @@ code {
     right: .5rem;
     border-radius: 50%;
     -webkit-transition:
-        width .3s linear,
-        height .3s linear,
-        top .3s linear,
-        right .3s linear,
-        background-color 0s linear .3s;
+        width .3s,
+        height .3s,
+        top .3s,
+        right .3s,
+        background-color 0s .3s;
     transition:
-        width .3s linear,
-        height .3s linear,
-        top .3s linear,
-        right .3s linear,
-        background-color 0s linear .3s;
+        width .3s,
+        height .3s,
+        top .3s,
+        right .3s,
+        background-color 0s .3s;
     background-color: white;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -215,17 +215,17 @@ code {
     top: calc(2rem - 200vw);
     right: calc(2rem - 200vw);
     -webkit-transition:
-        width .3s linear,
-        height .3s linear,
-        top .3s linear,
-        right .3s linear,
-        background-color 0s linear 0s;
+        width .3s,
+        height .3s,
+        top .3s,
+        right .3s,
+        background-color 0s 0s;
     transition:
-        width .3s linear,
-        height .3s linear,
-        top .3s linear,
-        right .3s linear,
-        background-color 0s linear 0s;
+        width .3s,
+        height .3s,
+        top .3s,
+        right .3s,
+        background-color 0s 0s;
 }
 .navburger-button::before {
     content: "";
@@ -271,8 +271,8 @@ code {
     -ms-flex-pack: distribute;
         justify-content: space-around;
     opacity: 0;
-    -webkit-transition: all .1s linear;
-    transition: all .1s linear;
+    -webkit-transition: all .1s;
+    transition: all .1s;
 }
 .navburger-checkbox:checked ~ .navburger-nav > .navburger-nav-linklist {
     opacity: 1;
@@ -342,7 +342,7 @@ code {
 .icon-email::before {
     background-image: url("/img/icons/email.svg");
 }
-.icon-github::before {
+.icon-octocat::before {
     background-image: url("/img/icons/github.svg");
 }
 .icon-dribbble::before {
@@ -718,15 +718,15 @@ span[data-link-onpage*=footnote] {
     }
 
     .navburger-button {
-        -webkit-transition: all .15s linear;
-        transition: all .15s linear;
+        -webkit-transition: all .15s;
+        transition: all .15s;
         -webkit-transition-delay: 0;
                 transition-delay: 0;
     }
 
     .navburger-nav-linklist {
-        -webkit-transition: all .15s linear;
-        transition: all .15s linear;
+        -webkit-transition: all .15s;
+        transition: all .15s;
         -webkit-transition-delay: 0;
                 transition-delay: 0;
     }
