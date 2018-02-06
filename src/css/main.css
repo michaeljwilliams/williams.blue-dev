@@ -21,6 +21,11 @@ strong {
     vertical-align: baseline;
 }
 
+/* VARIABLES ******************************************************************/
+$color-main: #08f;
+$color-link: $color-main;
+$color-navburger: #5af;
+
 /* DEFAULT FONTS **************************************************************/
 html,
 h1,
@@ -91,13 +96,13 @@ h3 {
 
 /* DEFAULT LINKS **************************************************************/
 .link:link {
-    color: #08f;
+    color: $color-link;
     border-bottom: .15rem dotted;
 }
 .link:hover,
 .link:focus,
 .link:active {
-    color: #08f;
+    color: $color-link;
     border-bottom: .15rem solid;
 }
 .link:visited {
@@ -175,7 +180,8 @@ code {
     pointer-events: auto;
 }
 .navburger-checkbox:checked ~ .navburger-button {
-    background-color: #08f;
+    background-color: $color-main;
+    background-color: $color-navburger;
     width: 400vw;
     height: 400vw;
     top: calc(2rem - 200vw);
@@ -197,11 +203,14 @@ code {
     background-size: 1.2rem 1rem;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #08f;
+    background-color: $color-main;
+    transition: background-color .5s;
 }
 .navburger-checkbox:checked ~ .navburger-button::before {
     background-image: url("/img/icons/hamburger button X.svg");
     background-size: 1rem 1rem;
+    background-color: $color-navburger;
+    transition: background-color .2s;
 }
 .navburger-nav {
     position: absolute;
@@ -244,7 +253,7 @@ code {
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: content-box;
-    border-color: #08f;
+    border-color: $color-main;
 }
 
 
@@ -501,14 +510,14 @@ span[data-link-onpage*=footnote] {
 
 /* COLOR **********************************************************************/
 /* really blue: #006fff
- * brighter: #108fff
+ * brighter blue: #108fff
  * blueprint blue: #08f
- * tropics: #03D7F9
- * greenish: #1DE1AC
+ * dark blue: #0646b6
+ * pale sky blue: #5af
  */
 
 .siteheader, .sitefooter {
-    background-color: #08f;
+    background-color: $color-main;
     color: white;
 }
 
@@ -519,16 +528,16 @@ span[data-link-onpage*=footnote] {
 
 /* Footnotes */
 span[data-link-onpage*=footnote] {
-    background-color: #08f;
+    background-color: $color-main;
 }
 
 .homehero {
-    background-color: #08f;
+    background-color: $color-main;
     color: white;
 }
 
 .postlist-post-title {
-    color: #08f;
+    color: $color-main;
 }
 .link-post:visited .postlist-post-title {
     color: #8a8a8a;
@@ -649,7 +658,7 @@ span[data-link-onpage*=footnote] {
 
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
 .u-link-pseudo {
-    color: #08f !important;
+    color: $color-main !important;
     border-bottom: .15rem dotted !important;
     cursor: pointer !important;
 }
@@ -660,7 +669,7 @@ span[data-link-onpage*=footnote] {
     cursor: pointer !important;
 }
 .u-link-pseudo-no-underline {
-    color: #08f !important;
+    color: $color-main !important;
     cursor: pointer !important;
 }
 
@@ -670,7 +679,7 @@ span[data-link-onpage*=footnote] {
     border: .2rem solid white;
     color: white;
     padding: .4rem;
-    background-color: #08f;
+    background-color: $color-main;
 }
 
 /* Notice in content area */
@@ -690,7 +699,7 @@ span[data-link-onpage*=footnote] {
 .u-notification-loading {
     border-radius: .5rem;
     border: .2rem solid white;
-    background-color: #08f;
+    background-color: $color-main;
     text-align: center;
     color: white;
     padding: 1rem;
