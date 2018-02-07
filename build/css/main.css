@@ -124,6 +124,7 @@ h3 {
 /* DEFAULT COLOR **************************************************************/
 html {
     color: black;
+    background-color: #08f;
 }
 body {
     background-color: white;
@@ -211,8 +212,7 @@ code {
     pointer-events: auto;
 }
 .navburger-checkbox:checked ~ .navburger-button {
-    background-color: #08f;
-    background-color: #5af;
+    background-color: #4af;
     width: 400vw;
     height: 400vw;
     top: calc(2rem - 200vw);
@@ -250,7 +250,7 @@ code {
 .navburger-checkbox:checked ~ .navburger-button::before {
     background-image: url("/img/icons/hamburger button X.svg");
     background-size: 1rem 1rem;
-    background-color: #5af;
+    background-color: #4af;
     -webkit-transition: background-color .2s;
     transition: background-color .2s;
 }
@@ -279,14 +279,16 @@ code {
     -ms-flex-pack: distribute;
         justify-content: space-around;
     opacity: 0;
-    -webkit-transition: all .1s;
-    transition: all .1s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    -webkit-transition-delay: 0s;
+            transition-delay: 0s;
 }
 .navburger-checkbox:checked ~ .navburger-nav > .navburger-nav-linklist {
     opacity: 1;
     pointer-events: auto;
-    -webkit-transition-delay: .17s;
-            transition-delay: .17s;
+    -webkit-transition-delay: .2s;
+            transition-delay: .2s;
 }
 
 .selfie {

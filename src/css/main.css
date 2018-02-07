@@ -24,7 +24,7 @@ strong {
 /* VARIABLES ******************************************************************/
 $color-main: #08f;
 $color-link: $color-main;
-$color-navburger: #5af;
+$color-navburger: #4af;
 
 /* DEFAULT FONTS **************************************************************/
 html,
@@ -113,6 +113,7 @@ h3 {
 /* DEFAULT COLOR **************************************************************/
 html {
     color: black;
+    background-color: $color-main;
 }
 body {
     background-color: white;
@@ -180,7 +181,6 @@ code {
     pointer-events: auto;
 }
 .navburger-checkbox:checked ~ .navburger-button {
-    background-color: $color-main;
     background-color: $color-navburger;
     width: 400vw;
     height: 400vw;
@@ -230,12 +230,13 @@ code {
     flex-direction: column;
     justify-content: space-around;
     opacity: 0;
-    transition: all .1s;
+    transition: all .2s;
+    transition-delay: 0s;
 }
 .navburger-checkbox:checked ~ .navburger-nav > .navburger-nav-linklist {
     opacity: 1;
     pointer-events: auto;
-    transition-delay: .17s;
+    transition-delay: .2s;
 }
 
 .selfie {
