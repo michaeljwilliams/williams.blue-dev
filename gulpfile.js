@@ -29,28 +29,32 @@ const paths = {
         "htmlwatch": ["src/**/*.html"],
         "css": ["src/css/**/*.css"],
         "js": ["src/js/**/*.js"],
-        "img": ["src/img/**/*.*"]
+        "img": ["src/img/**/*.*"],
+        "media": ["src/media/**/*.*"]
     },
     "build": {
         "i": "build",
         "html": "build",
         "css": "build/css",
         "js": "build/js",
-        "img": "build/img"
+        "img": "build/img",
+        "media": "build/media"
     },
     "buildsrc": {
         "i": "build",
         "html": ["build/*.html"],
         "css": ["build/css/**/*.css"],
         "js": ["build/js/**/*.js"],
-        "img": ["build/img/**/*.*"]
+        "img": ["build/img/**/*.*"],
+        "media": ["build/media/**/*.*"]
     },
     "dist": {
         "i": "../williams.blue",
         "html": "../williams.blue",
         "css": "../williams.blue/css",
         "js": "../williams.blue/js/",
-        "img": "../williams.blue/img"
+        "img": "../williams.blue/img",
+        "media": "../williams.blue/media"
     }
 };
 
@@ -63,7 +67,7 @@ gulp.task("default", gulp.series(
         buildCSS,
         buildJS,
         copyImg,
-        // copyMiscToBuild // Uncomment if needed; otherwise gives an error if there aren"t any files to copy.
+        copyMedia
     ),
     gulp.parallel(
         watchAndRebuild,
@@ -81,7 +85,7 @@ gulp.task("dist", gulp.series(
     cleanDist,
     gulp.parallel(
         distImg,
-        // copyMiscToDist, // Uncomment if needed; otherwise gives an error if there aren"t any files to copy.
+        distMedia,
         distHTML,
         distCSS,
         distJS,
@@ -91,8 +95,6 @@ gulp.task("dist", gulp.series(
 
 
 // BUILD ///////////////////////////////////////////////////////////////////////////////////////////
-const miscFilesToCopy = [];
-
 // Start browser sync
 function startBrowserSync() {
     browserSync.init({
@@ -109,7 +111,7 @@ function watchAndRebuild() {
     ,   gulp.watch(paths.src.css, buildCSS)
     ,   gulp.watch(paths.src.js, buildJS)
     ,   gulp.watch(paths.src.img, copyImg)
-    ,   gulp.watch(miscFilesToCopy, copyMiscToBuild)
+    ,   gulp.watch(paths.src.media, copyMedia)
     ];
 
     for(let each of watcher) {
@@ -165,10 +167,11 @@ function copyImg(done) {
     done()
 };
 
-// Copy miscellaneous files to build
-function copyMiscToBuild(done) {
-    return gulp.src(miscFilesToCopy)
-        .pipe(gulp.dest(paths.build.i))
+// Copy media from src
+function copyMedia(done) {
+    del(paths.buildsrc.media, { since: gulp.lastRun("default") })
+    return gulp.src(paths.src.media)
+        .pipe(gulp.dest(paths.build.media))
     done()
 };
 
@@ -219,7 +222,7 @@ function cleanDist(done) {
     done();
 };
 
-// Optimize images
+// Dist images (optimize)
 function distImg(done) {
   return gulp.src(paths.src.img)
     .pipe(imagemin([
@@ -237,10 +240,10 @@ function distImg(done) {
     done();
 };
 
-// Copy miscellaneous files to dist
-function copyMiscToDist(done) {
-    return gulp.src(miscFilesToCopy)
-        .pipe(gulp.dest(paths.dist.i));
+// Dist media
+function distMedia(done) {
+  return gulp.src(paths.src.media)
+    .pipe(gulp.dest(paths.dist.media));
     done();
 };
 
