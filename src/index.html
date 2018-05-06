@@ -5,9 +5,13 @@
     }
 } &}}
     <section class="homehero">
-        <p class="homehero-p">
-            Hi, I'm Michael! I'm a designer, developer, and user experience activist. <span class="u-nowrap-phrase">I love</span> creating fast, easy-to-use apps and sites. <span class="u-nowrap-phrase">I also</span> enjoy sharing <a href="posts.html" class="link-homehero">my ideas</a> and <a href="/code.html" class="link-homehero">my</a> <a href="/design.html" class="link-homehero">work</a>.
-        </p>
+        <p class="homehero-p u-center">Hi, I'm Michael! I love designing fast, easy-to-use apps and sites.</p>
+        <div class="homehero-social-links-container">
+            <a href="mailto:{{$ __Pep.michael.publicEmail $}}" class="homehero-footericon icon-email">Email</a>
+            <a href="https://github.com/michaeljwilliams" class="homehero-footericon icon-octocat">Code</a>
+            <a href="https://dribbble.com/mjwilliams" class="homehero-footericon icon-dribbble">Design</a>
+            <a href="https://open.spotify.com/user/mwilliaams" class="homehero-footericon icon-spotify">Tunes</a>
+        </div>
     </section>
     <main>
         <section>
@@ -31,6 +35,14 @@
                     }
                 )}}
             </ol>
+            <a href="/posts.html" class="link">See all posts</a>
         </section>
     </main>
-{{& "./src/pep_includes/_foot.html" &}}
+
+    <footer class="sitefooter">
+        <small>Michael Williams</small>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

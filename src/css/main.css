@@ -144,135 +144,32 @@ code {
     overflow: scroll;
 }
 
-
-.navburgercontainer {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    margin: auto;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 97;
-}
-.navburger-checkbox {
-    position: relative;
-    display: none;
-}
-.navburger-button {
+.logo {
     height: 3rem;
     width: 3rem;
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-    border-radius: 50%;
-    transition:
-        width .3s,
-        height .3s,
-        top .3s,
-        right .3s,
-        background-color 0s .3s;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 98;
-    cursor: pointer;
-    pointer-events: auto;
-}
-.navburger-checkbox:checked ~ .navburger-button {
-    background-color: $color-navburger;
-    width: 400vw;
-    height: 400vw;
-    top: calc(2rem - 200vw);
-    right: calc(2rem - 200vw);
-    transition:
-        width .3s,
-        height .3s,
-        top .3s,
-        right .3s,
-        background-color 0s 0s;
-}
-.navburger-button::before {
-    content: "";
-    height: 3rem;
-    width: 3rem;
-    border: .2rem solid white;
-    border-radius: 50%;
-    background-image: url("/img/icons/hamburger button.svg");
-    background-size: 1.2rem 1rem;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: $color-main;
-    transition: background-color .5s;
-}
-.navburger-checkbox:checked ~ .navburger-button::before {
-    background-image: url("/img/icons/hamburger button X.svg");
-    background-size: 1rem 1rem;
-    background-color: $color-navburger;
-    transition: background-color .2s;
-}
-.navburger-nav {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-}
-.navburger-nav-linklist {
-    position: absolute;
-    top: 4rem;
-    height: 80%;
-    width: 100vw;
-    z-index: 99;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    opacity: 0;
-    transition: all .2s;
-    transition-delay: 0s;
-}
-.navburger-checkbox:checked ~ .navburger-nav > .navburger-nav-linklist {
-    opacity: 1;
-    pointer-events: auto;
-    transition-delay: .2s;
-}
-
-.selfie {
-    width: 80%;
-    height: 80%;
+    border-radius: .2rem;
+    margin: 1rem auto;
     display: block;
-    max-width: 16rem;
-    max-height: 16rem;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 50%;
-    border: 8px solid;
-    background-image: url("/img/selfie.jpg");
-    background-size: 105% 105%;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: content-box;
-    border-color: $color-main;
 }
-
-
-.social-links-container {
+.social-links-container,
+.homehero-social-links-container {
     max-width: 44rem;
     margin: 0 auto 1rem auto;
     display: block;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 1rem;
 }
-.footericon {
+.footericon,
+.homehero-footericon {
     padding: .5rem 0 .5rem 0;
     display: inline-block;
     text-align: left;
     line-height: 3rem;
 }
-.footericon::before {
+.footericon::before,
+.homehero-footericon::before {
     content: "";
     display: inline-block;
     width: 3rem;
@@ -282,6 +179,14 @@ code {
     background-repeat: no-repeat;
     background-position: center;
 }
+.homehero-social-links-container {
+    max-width: 20rem;
+}
+.homehero-footericon {
+    width: 8rem;
+    margin-bottom: 3rem;
+}
+
 .icon-email::before {
     background-image: url("/img/icons/email.svg");
 }
@@ -315,32 +220,26 @@ main > div > article:not(.full-width) {
 }
 
 .siteheader {
-    padding: .5rem 0 1rem 0;
+    padding: 1rem 0 2rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    text-align: center;
 }
 .masthead {
-    text-align: center;
     font-size: 2.4rem;
     line-height: 3rem;
-}
-.siteheadernav {
-    width: 100%;
-    max-width: 44rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    margin: 0 auto;
 }
 
 .homehero {
-    height: 80vh;
+    height: 26rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .homehero-p {
@@ -348,7 +247,6 @@ main > div > article:not(.full-width) {
     width: 90%;
     font-size: 2rem;
     line-height: 3rem;
-    padding-bottom: 6rem;
 }
 
 .sitefooter {
@@ -419,43 +317,6 @@ ol.footnotes li {
     display: inline-block;
 }
 
-.gallery-section {
-    width: 100%;
-    text-align: center;
-}
-.gallery-section > div {
-    min-width: 12rem;
-    min-height: 12rem;
-    max-width: calc(100% - 4rem);
-    margin: 1rem;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-}
-.gallery-section img {
-    max-width: 100%;
-    max-height: 100%;
-    cursor: pointer;
-}
-.gallery-section > div > div {
-    padding: 1rem;
-    background-color: rgba(0,0,0,.75);
-    position: absolute;
-    left: -1rem;
-    top: -1rem;
-    width: calc(100% + 2rem);
-    height: calc(100% + 2rem);
-    border-radius: .5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    cursor: pointer;
-}
-.gallery-section > div > div > p {
-    width: 100%;
-    color: white;
-}
-
 /* Footnotes */
 span[data-link-onpage*=footnote] {
     color: white;
@@ -472,27 +333,12 @@ span[data-link-onpage*=footnote] {
 }
 
 /* FONTS **********************************************************************/
-
+.siteheader a,
+.siteheader p {
+    font-weight: 200;
+}
 
 /* LINKS **********************************************************************/
-.link-navburger {
-    color: white;
-    border-bottom: .18rem dotted;
-    line-height: 2rem;
-    font-size: 2rem;
-}
-.link-navburger:hover {
-    border-bottom: .18rem solid;
-}
-
-.link-siteheadernav {
-    color: white;
-    border-bottom: .15rem dotted;
-}
-.link-siteheadernav:hover {
-    border-bottom: .15rem solid;
-}
-
 .link-homehero {
     font-size: 2rem;
     line-height: 3rem;
@@ -573,25 +419,6 @@ span[data-link-onpage*=footnote] {
 
     .siteheader {
         display: inherit;
-        text-align: left;
-        padding: .5rem 0 1rem 5%;
-    }
-    .masthead {
-        margin-right: 4rem;
-    }
-
-    .siteheadernav {
-        display: none;
-    }
-
-    .navburger-button {
-        transition: all .15s;
-        transition-delay: 0;
-    }
-
-    .navburger-nav-linklist {
-        transition: all .15s;
-        transition-delay: 0;
     }
 
     .homehero-p, .link-homehero {
@@ -604,6 +431,9 @@ span[data-link-onpage*=footnote] {
     }
     .footericon {
         width: 8rem;
+    }
+    .homehero-footericon {
+        margin-bottom: 1rem;
     }
 
 }
