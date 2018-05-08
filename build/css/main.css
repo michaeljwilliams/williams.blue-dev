@@ -165,16 +165,15 @@ code {
     width: 48px;
     width: 3rem;
     border-radius: .2rem;
-    margin: 16px auto;
-    margin: 1rem auto;
+    margin: 8px auto;
+    margin: .5rem auto;
     display: block;
 }
 .social-links-container,
 .homehero-social-links-container {
     max-width: 704px;
     max-width: 44rem;
-    margin: 0 auto 16px auto;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto;
     display: block;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -184,8 +183,6 @@ code {
             justify-content: space-between;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    padding: 16px;
-    padding: 1rem;
 }
 .footericon,
 .homehero-footericon {
@@ -195,6 +192,8 @@ code {
     text-align: left;
     line-height: 48px;
     line-height: 3rem;
+    margin: 16px auto;
+    margin: 1rem auto;
 }
 .footericon::before,
 .homehero-footericon::before {
@@ -217,8 +216,6 @@ code {
 .homehero-footericon {
     width: 128px;
     width: 8rem;
-    margin-bottom: 48px;
-    margin-bottom: 3rem;
 }
 
 .icon-email::before {
@@ -252,14 +249,12 @@ main > div > article:not(.full-width) {
 }
 
 .siteheader, .sitefooter {
-    min-height: 64px;
-    min-height: 4rem;
     width: 100%;
 }
 
 .siteheader {
-    padding: 16px 0 32px 0;
-    padding: 1rem 0 2rem 0;
+    padding: 8px 16px 16px 16px;
+    padding: .5rem 1rem 1rem 1rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -283,8 +278,7 @@ main > div > article:not(.full-width) {
 }
 
 .homehero {
-    height: 416px;
-    height: 26rem;
+    height: 90vh;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -299,9 +293,14 @@ main > div > article:not(.full-width) {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    padding: 32px 16px;
+    padding: 2rem 1rem;
+}
+.homehero-header {
+    text-align: center;
 }
 
-.homehero-p {
+.homehero-blurb {
     max-width: 704px;
     max-width: 44rem;
     width: 90%;
@@ -309,6 +308,7 @@ main > div > article:not(.full-width) {
     font-size: 2rem;
     line-height: 48px;
     line-height: 3rem;
+    text-align: center;
 }
 
 .sitefooter {
@@ -414,8 +414,9 @@ span[data-link-onpage*=footnote] {
 }
 
 /* FONTS **********************************************************************/
-.siteheader a,
-.siteheader p {
+.masthead,
+.siteheader p,
+.homehero-header p {
     font-weight: 200;
 }
 
@@ -512,7 +513,7 @@ span[data-link-onpage*=footnote] {
     }
 
     .social-links-container {
-        max-width: 16rem;
+        max-width: 20rem;
     }
     .footericon {
         width: 8rem;

@@ -1,11 +1,25 @@
-{{& "./src/pep_includes/_head.html", {
-    "currentPage": {
-        "title": "Michael Williams",
-        "url": "/index.html"
-    }
-} &}}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Michael Williams, UI/UX Designer</title>
+    <meta content="Michael Williams, UI/UX Designer" name="description">
+    <meta content="Michael Williams" name="author">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <link href="/img/icons/favicon.svg" rel="icon" type="icon">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
     <section class="homehero">
-        <p class="homehero-p u-center">Hi, I'm Michael! I love designing fast, easy-to-use apps and sites.</p>
+        <div class="homehero-header">
+            <img class="logo" src="/img/socket.svg" alt="electrical socket">
+            <a href="/" class="masthead">Michael Williams</a>
+            <p>UI/UX Designer</p>
+        </div>
+        <p class="homehero-blurb">Hi, I'm Michael! I love designing fast, easy-to-use apps and sites.</p>
         <div class="homehero-social-links-container">
             <a href="mailto:{{$ __Pep.michael.publicEmail $}}" class="homehero-footericon icon-email">Email</a>
             <a href="https://github.com/michaeljwilliams" class="homehero-footericon icon-octocat">Code</a>

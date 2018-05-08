@@ -148,18 +148,17 @@ code {
     height: 3rem;
     width: 3rem;
     border-radius: .2rem;
-    margin: 1rem auto;
+    margin: .5rem auto;
     display: block;
 }
 .social-links-container,
 .homehero-social-links-container {
     max-width: 44rem;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto;
     display: block;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 1rem;
 }
 .footericon,
 .homehero-footericon {
@@ -167,6 +166,7 @@ code {
     display: inline-block;
     text-align: left;
     line-height: 3rem;
+    margin: 1rem auto;
 }
 .footericon::before,
 .homehero-footericon::before {
@@ -184,7 +184,6 @@ code {
 }
 .homehero-footericon {
     width: 8rem;
-    margin-bottom: 3rem;
 }
 
 .icon-email::before {
@@ -215,12 +214,11 @@ main > div > article:not(.full-width) {
 }
 
 .siteheader, .sitefooter {
-    min-height: 4rem;
     width: 100%;
 }
 
 .siteheader {
-    padding: 1rem 0 2rem 0;
+    padding: .5rem 1rem 1rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,19 +232,24 @@ main > div > article:not(.full-width) {
 }
 
 .homehero {
-    height: 26rem;
+    height: 90vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    padding: 2rem 1rem;
+}
+.homehero-header {
+    text-align: center;
 }
 
-.homehero-p {
+.homehero-blurb {
     max-width: 44rem;
     width: 90%;
     font-size: 2rem;
     line-height: 3rem;
+    text-align: center;
 }
 
 .sitefooter {
@@ -333,8 +336,9 @@ span[data-link-onpage*=footnote] {
 }
 
 /* FONTS **********************************************************************/
-.siteheader a,
-.siteheader p {
+.masthead,
+.siteheader p,
+.homehero-header p {
     font-weight: 200;
 }
 
@@ -427,7 +431,7 @@ span[data-link-onpage*=footnote] {
     }
 
     .social-links-container {
-        max-width: 16rem;
+        max-width: 20rem;
     }
     .footericon {
         width: 8rem;
