@@ -154,7 +154,7 @@ code {
 .social-links-container,
 .homehero-social-links-container {
     max-width: 44rem;
-    margin: 0 auto;
+    margin: 4rem auto 0 auto;
     display: block;
     display: flex;
     justify-content: space-between;
@@ -237,7 +237,7 @@ main > div > article:not(.full-width) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     padding: 0 1rem;
 }
 .homehero-header {
@@ -336,11 +336,13 @@ span[data-link-onpage*=footnote] {
 }
 
 /* FONTS **********************************************************************/
+/*
 .masthead,
 .siteheader p,
 .homehero-header p {
     font-weight: 200;
 }
+*/
 
 /* LINKS **********************************************************************/
 .link-homehero {
