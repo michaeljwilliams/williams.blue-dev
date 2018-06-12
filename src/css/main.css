@@ -154,19 +154,29 @@ code {
 .social-links-container,
 .homehero-social-links-container {
     max-width: 44rem;
-    margin: 4rem auto 0 auto;
+    margin: 0 auto;
     display: block;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.footericon,
-.homehero-footericon {
+.homehero-social-links-container-div {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.footericon {
     padding: .5rem 0 .5rem 0;
     display: inline-block;
     text-align: left;
     line-height: 3rem;
     margin: 1rem auto;
+}
+.homehero-footericon {
+    display: inline-block;
+    text-align: left;
+    line-height: 3rem;
+    margin: 2rem 1rem;
 }
 .footericon::before,
 .homehero-footericon::before {
@@ -181,9 +191,9 @@ code {
 }
 .homehero-social-links-container {
     max-width: 20rem;
+    margin-top: 4rem;
 }
 .homehero-footericon {
-    width: 8rem;
 }
 
 .icon-email::before {
